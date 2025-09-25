@@ -1,0 +1,180 @@
+{
+  "taskmaster-hooks": {
+    "description": "TaskMaster 自動觸發和工作流程 Hooks 配置",
+    "version": "1.0.0",
+    "enabled": true,
+
+    "file-detection-hooks": {
+      "claude-template-trigger": {
+        "trigger": {
+          "type": "file-exists",
+          "pattern": "CLAUDE_TEMPLATE.md",
+          "path": "root"
+        },
+        "action": {
+          "command": "/task-init",
+          "args": ["auto", "--document-driven"],
+          "confirmation": "required"
+        },
+        "description": "偵測到 CLAUDE_TEMPLATE.md 時自動觸發 TaskMaster 初始化"
+      }
+    },
+
+    "task-lifecycle-hooks": {
+      "document-generation-complete": {
+        "trigger": {
+          "type": "task-complete",
+          "condition": "deliverable && deliverable.endsWith('.md')"
+        },
+        "action": {
+          "command": "notify-driver-review",
+          "args": ["document", "${deliverable}"],
+          "notification": true
+        },
+        "description": "文檔生成完成時通知駕駛員審查"
+      },
+
+      "phase-gate-reached": {
+        "trigger": {
+          "type": "task-start",
+          "condition": "isGate === true"
+        },
+        "action": {
+          "command": "require-driver-approval",
+          "args": ["phase-gate", "${phase}"],
+          "blocking": true
+        },
+        "description": "到達階段閘道時要求駕駛員確認"
+      },
+
+      "all-documents-ready": {
+        "trigger": {
+          "type": "batch-complete",
+          "condition": "phase === 'Phase 2' && allDocumentsGenerated"
+        },
+        "action": {
+          "command": "trigger-review-gate",
+          "args": ["Phase 2.5"],
+          "priority": "high"
+        },
+        "description": "所有 Phase 1-2 文檔完成時觸發審查閘道"
+      }
+    },
+
+    "driver-interaction-hooks": {
+      "review-decision": {
+        "trigger": {
+          "type": "driver-action",
+          "action": "review-complete"
+        },
+        "action": {
+          "command": "process-review-decision",
+          "args": ["${decision}", "${comments}"],
+          "nextPhase": "conditional"
+        },
+        "description": "處理駕駛員審查決策"
+      },
+
+      "manual-override": {
+        "trigger": {
+          "type": "command",
+          "pattern": "/task-override *"
+        },
+        "action": {
+          "command": "execute-override",
+          "args": ["${override-type}", "${parameters}"],
+          "confirmation": "always-required"
+        },
+        "description": "處理駕駛員手動覆蓋命令"
+      }
+    },
+
+    "quality-assurance-hooks": {
+      "document-quality-check": {
+        "trigger": {
+          "type": "pre-review",
+          "condition": "deliverable && reviewRequired"
+        },
+        "action": {
+          "agent": "documentation-specialist",
+          "task": "quality-check",
+          "args": ["${deliverable}"],
+          "blocking": false
+        },
+        "description": "文檔提交審查前的品質檢查"
+      },
+
+      "template-compliance-check": {
+        "trigger": {
+          "type": "document-generated",
+          "condition": "template"
+        },
+        "action": {
+          "agent": "workflow-template-manager",
+          "task": "compliance-check",
+          "args": ["${template}", "${deliverable}"],
+          "blocking": false
+        },
+        "description": "檢查生成的文檔是否符合範本要求"
+      }
+    },
+
+    "escalation-hooks": {
+      "task-blocked": {
+        "trigger": {
+          "type": "task-blocked",
+          "duration": "> 30 minutes"
+        },
+        "action": {
+          "command": "escalate-to-driver",
+          "args": ["task-blocked", "${taskId}", "${reason}"],
+          "priority": "urgent"
+        },
+        "description": "任務阻塞超過 30 分鐘時上報駕駛員"
+      },
+
+      "review-timeout": {
+        "trigger": {
+          "type": "review-pending",
+          "duration": "> 2 hours"
+        },
+        "action": {
+          "command": "remind-driver",
+          "args": ["review-pending", "${documents}"],
+          "priority": "normal"
+        },
+        "description": "審查等待超過 2 小時時提醒駕駛員"
+      }
+    }
+  },
+
+  "hook-execution-settings": {
+    "maxConcurrentHooks": 5,
+    "retryAttempts": 3,
+    "timeoutSeconds": 300,
+    "logLevel": "info",
+    "enableNotifications": true,
+    "driverConfirmationRequired": [
+      "file-detection-hooks",
+      "phase-gate-reached",
+      "manual-override"
+    ]
+  },
+
+  "integration-points": {
+    "claude-code": {
+      "settingsPath": ".claude/settings.local.json",
+      "commandPrefix": "/",
+      "notificationMethod": "console"
+    },
+    "taskmaster": {
+      "corePath": ".claude/taskmaster.js",
+      "dataPath": ".claude/taskmaster-data/",
+      "contextPath": ".claude/context/"
+    },
+    "vibecoding": {
+      "templatesPath": "VibeCoding_Workflow_Templates/",
+      "documentOutputPath": "docs/"
+    }
+  }
+}

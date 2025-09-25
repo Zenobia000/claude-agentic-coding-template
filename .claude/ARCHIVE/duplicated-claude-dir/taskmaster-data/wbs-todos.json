@@ -1,0 +1,43 @@
+{
+  "projectContext": {
+    "name": "demo-project",
+    "startDate": "2025-09-25T07:05:11.830Z"
+  },
+  "currentTask": null,
+  "todos": [
+    {
+      "id": "task-001",
+      "title": "建立專案基礎結構",
+      "description": "設置開發環境和專案架構",
+      "status": "pending",
+      "assignedAgent": null,
+      "startTime": null,
+      "endTime": null,
+      "blockers": [],
+      "progress": 0
+    },
+    {
+      "id": "task-002",
+      "title": "系統架構設計",
+      "description": "建立系統架構文檔",
+      "status": "pending",
+      "assignedAgent": null,
+      "startTime": null,
+      "endTime": null,
+      "blockers": [],
+      "progress": 0
+    },
+    {
+      "id": "task-003",
+      "title": "模組規格與測試",
+      "description": "建立模組規格和測試框架",
+      "status": "pending",
+      "assignedAgent": null,
+      "startTime": null,
+      "endTime": null,
+      "blockers": [],
+      "progress": 0
+    }
+  ],
+  "lastUpdated": "2025-09-25T07:05:11.830Z"
+}

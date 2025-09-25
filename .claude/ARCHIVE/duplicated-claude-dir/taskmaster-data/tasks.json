@@ -1,0 +1,38 @@
+[
+  {
+    "id": "task-001",
+    "title": "建立專案基礎結構",
+    "description": "設置 React + TypeScript + Vite 開發環境",
+    "estimatedTime": "15-20 分鐘",
+    "suggestedAgent": "🏗️ infrastructure-agent",
+    "relatedTemplate": "06_project_structure_guide.md",
+    "priority": 1,
+    "status": "pending",
+    "humanApproval": false,
+    "created": "2025-09-25T06:58:53.963Z"
+  },
+  {
+    "id": "task-002",
+    "title": "架構設計文檔",
+    "description": "建立系統架構設計和技術決策文檔",
+    "estimatedTime": "25-30 分鐘",
+    "suggestedAgent": "📝 documentation-specialist",
+    "relatedTemplate": "03_architecture_and_design_document.md",
+    "priority": 2,
+    "status": "pending",
+    "humanApproval": false,
+    "created": "2025-09-25T06:58:53.963Z"
+  },
+  {
+    "id": "task-003",
+    "title": "模組規格與測試",
+    "description": "建立模組規格文檔和對應測試套件",
+    "estimatedTime": "20-25 分鐘",
+    "suggestedAgent": "🟢 test-automation-engineer",
+    "relatedTemplate": "04_module_specification_and_tests.md",
+    "priority": 2,
+    "status": "pending",
+    "humanApproval": false,
+    "created": "2025-09-25T06:58:53.963Z"
+  }
+]

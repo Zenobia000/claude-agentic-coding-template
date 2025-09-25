@@ -1,0 +1,34 @@
+{
+  "name": "demo-project",
+  "tasks": [
+    {
+      "id": "task-001",
+      "title": "建立專案基礎結構",
+      "description": "設置開發環境和專案架構",
+      "estimatedTime": "15-20 分鐘",
+      "status": "pending",
+      "created": "2025-09-25T07:05:11.829Z"
+    },
+    {
+      "id": "task-002",
+      "title": "系統架構設計",
+      "description": "建立系統架構文檔",
+      "estimatedTime": "25-30 分鐘",
+      "status": "pending",
+      "created": "2025-09-25T07:05:11.829Z"
+    },
+    {
+      "id": "task-003",
+      "title": "模組規格與測試",
+      "description": "建立模組規格和測試框架",
+      "estimatedTime": "20-25 分鐘",
+      "status": "pending",
+      "created": "2025-09-25T07:05:11.829Z"
+    }
+  ],
+  "hubAnalysis": {
+    "strategy": "parallel-optimized",
+    "complexity": "low",
+    "estimatedDuration": "2 小時"
+  }
+}

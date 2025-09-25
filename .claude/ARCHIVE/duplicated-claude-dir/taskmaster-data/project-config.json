@@ -1,0 +1,20 @@
+{
+  "name": "performance-test",
+  "templates": [
+    "06_project_structure_guide.md",
+    "03_architecture_and_design_document.md",
+    "04_module_specification_and_tests.md"
+  ],
+  "hubStrategy": {
+    "executionMode": "parallel-optimized",
+    "description": "中等複雜度專案：並行優化，關鍵點確認",
+    "humanCheckpoints": [
+      "project-setup",
+      "mid-development",
+      "pre-completion"
+    ],
+    "agentCoordination": "sequential-optimized"
+  },
+  "initialized": "2025-09-25T06:58:55.464Z",
+  "humanApproved": true
+}
