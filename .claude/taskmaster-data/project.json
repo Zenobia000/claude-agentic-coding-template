@@ -1,0 +1,56 @@
+{
+  "name": "TestProject",
+  "tasks": [
+    {
+      "id": "task-001",
+      "title": "產生系統架構文檔",
+      "description": "基於 PRD 生成詳細的系統架構設計文檔，供駕駛員審查",
+      "phase": "Phase 2",
+      "template": "03_architecture_and_design_document.md",
+      "deliverable": "docs/Architecture.md",
+      "reviewRequired": true,
+      "dependsOn": [
+        "task-001"
+      ],
+      "priority": "high",
+      "status": "pending",
+      "created": "2025-09-25T10:56:14.373Z"
+    },
+    {
+      "id": "task-002",
+      "title": "產生模組規格文檔",
+      "description": "基於架構設計生成模組規格文檔，供駕駛員審查",
+      "phase": "Phase 2",
+      "template": "05_module_specification_and_tests.md",
+      "deliverable": "docs/Module_Specification.md",
+      "reviewRequired": true,
+      "dependsOn": [
+        "task-002"
+      ],
+      "priority": "medium",
+      "status": "pending",
+      "created": "2025-09-25T10:56:14.373Z"
+    },
+    {
+      "id": "task-003",
+      "title": "**等待駕駛員審查 Phase 1-2 文檔**",
+      "description": "駕駛員需要審查所有 Phase 1-2 產生的文檔並確認後，才能進入開發階段",
+      "phase": "Phase 2.5",
+      "deliverable": null,
+      "reviewRequired": true,
+      "isGate": true,
+      "dependsOn": [
+        "task-001",
+        "task-002"
+      ],
+      "priority": "critical",
+      "status": "pending",
+      "created": "2025-09-25T10:56:14.373Z"
+    }
+  ],
+  "hubAnalysis": {
+    "strategy": "parallel-optimized",
+    "complexity": "low",
+    "estimatedDuration": "2 小時"
+  }
+}

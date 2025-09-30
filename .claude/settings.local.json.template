@@ -1,0 +1,116 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git --version)",
+      "Bash(gh:*)",
+      "Bash(curl:*)",
+      "Bash(sudo dd:*)",
+      "Bash(sudo chmod:*)",
+      "Bash(snap install:*)",
+      "Bash(npm install:*)",
+      "Bash(export PATH=\"$HOME/.local/bin:$PATH\")",
+      "Bash(mkdir:*)",
+      "Bash(tree:*)",
+      "Bash(npx @modelcontextprotocol/server-brave-search:*)",
+      "Bash(npx @context7/mcp-server:*)",
+      "Bash(npx @modelcontextprotocol/server-sqlite:*)",
+      "Bash(npx @modelcontextprotocol/server-github:*)",
+      "Bash(npm search:*)",
+      "Bash(BRAVE_API_KEY=\"[YOUR_BRAVE_API_KEY]\" npx @modelcontextprotocol/server-brave-search --help)",
+      "Bash(CONTEXT7_API_KEY=\"[YOUR_CONTEXT7_API_KEY]\" npx @context7/mcp-server --help)",
+      "Bash(CONTEXT7_API_KEY=\"[YOUR_CONTEXT7_API_KEY]\" npx @upstash/context7-mcp --help)",
+      "Bash(claude doctor)",
+      "WebFetch(domain:docs.claude.com)",
+      "WebFetch(domain:vocus.cc)",
+      "Bash(claude mcp add:*)",
+      "Bash(claude mcp:*)",
+      "Read(//**)",
+      "Bash(npx:*)",
+      "Bash(find:*)",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_install",
+      "Bash(grep:*)",
+      "Bash(git init:*)",
+      "mcp__github__create_repository",
+      "Bash(git add:*)",
+      "Bash(git rm:*)",
+      "Bash(git commit:*)",
+      "Bash(git remote add:*)",
+      "Bash(git branch:*)",
+      "Bash(git push:*)",
+      "Bash(cp:*)",
+      "Bash(git checkout:*)",
+      "Bash(node:*)",
+      "Bash(chmod:*)"
+    ],
+    "deny": [],
+    "ask": []
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "brave-search",
+    "context7",
+    "github",
+    "playwright"
+  ],
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/session-start.sh",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/user-prompt-submit.sh '{{content}}'",
+            "timeout": 15
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/pre-tool-use.sh Write '{{args}}'",
+            "timeout": 10
+          }
+        ]
+      },
+      {
+        "matcher": "Task",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/pre-tool-use.sh Task '{{args}}'",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/post-write.sh '{{args.file_path}}'",
+            "timeout": 20
+          }
+        ]
+      }
+    ]
+  }
+}
