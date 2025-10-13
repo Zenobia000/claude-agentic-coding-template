@@ -7,17 +7,39 @@ argument-hint: [template-name] - One of the 10 available VibeCoding templates
 
 ## Template Selection: $1
 
-Available VibeCoding Templates:
-1. **project-brief** → `01_project_brief_and_prd.md`
-2. **adr** → `01_adr_template.md`
-3. **bdd** → `02_bdd_scenarios_guide.md`
-4. **architecture** → `03_architecture_and_design_document.md`
-5. **api** → `04_api_design_specification_template.md`
-6. **tests** → `04_module_specification_and_tests.md`
-7. **security** → `05_security_and_readiness_checklists.md`
-8. **structure** → `06_project_structure_guide.md`
-9. **dependencies** → `08_file_dependencies_template.md`
-10. **classes** → `09_class_relationships_template.md`
+Available VibeCoding Templates (v2.1):
+
+### 階段 0：總覽與工作流 (00-01)
+1. **workflow-manual** → `00_workflow_manual.md`
+2. **dev-cookbook** → `01_development_workflow_cookbook.md`
+
+### 階段 1：規劃階段 (02-03)
+3. **project-brief** → `02_project_brief_and_prd.md`
+4. **bdd** → `03_behavior_driven_development_guide.md`
+
+### 階段 2：架構與設計 (04-06)
+5. **adr** → `04_architecture_decision_record_template.md`
+6. **architecture** → `05_architecture_and_design_document.md`
+7. **api** → `06_api_design_specification.md`
+
+### 階段 3：詳細設計 (07-10)
+8. **tests** → `07_module_specification_and_tests.md`
+9. **structure** → `08_project_structure_guide.md`
+10. **dependencies** → `09_file_dependencies_template.md`
+11. **classes** → `10_class_relationships_template.md`
+
+### 階段 4：開發與品質 (11-12, 17)
+12. **code-review** → `11_code_review_and_refactoring_guide.md`
+13. **frontend-arch** → `12_frontend_architecture_specification.md`
+14. **frontend-ia** → `17_frontend_information_architecture_template.md`
+
+### 階段 5：安全與部署 (13-14)
+15. **security** → `13_security_and_readiness_checklists.md`
+16. **deployment** → `14_deployment_and_operations_guide.md`
+
+### 階段 6：維護與管理 (15-16)
+17. **documentation** → `15_documentation_and_maintenance_guide.md`
+18. **wbs** → `16_wbs_development_plan_template.md`
 
 ## 🔍 Template Compliance Analysis
 
@@ -25,56 +47,93 @@ Available VibeCoding Templates:
 
 ### Template-Specific Validation
 
-#### **If Template: API (`api`)**
+#### **階段 0-1: 總覽與流程**
 ```
-🔍 API Design Template Compliance:
-├── RESTful endpoint design
-├── Request/Response schemas
-├── Error handling patterns
-├── Authentication mechanisms
-├── Rate limiting considerations
-└── Documentation completeness
+📖 Workflow Manual / Dev Cookbook Compliance:
+├── 開發流程文檔完整性
+├── 角色職責定義清晰度
+├── 階段轉換檢查點
+├── 品質門檻設定
+└── 流程可執行性
+
+🎯 建議 Subagent: 🎯 workflow-template-manager
+```
+
+#### **階段 1: 規劃階段 (`project-brief`, `bdd`)**
+```
+📋 Planning Template Compliance:
+├── PRD 需求完整性
+├── BDD 情境覆蓋率
+├── 利害關係人對齊
+├── 驗收標準明確性
+└── 需求可測試性
 
 🎯 建議 Subagent: 📝 documentation-specialist
 ```
 
-#### **If Template: Security (`security`)**
+#### **階段 2: 架構設計 (`adr`, `architecture`, `api`)**
 ```
-🛡️ Security & Readiness Template Compliance:
-├── Input validation coverage
-├── Authentication implementation
-├── Authorization mechanisms
-├── Data encryption standards
-├── OWASP compliance
-└── Security testing protocols
-
-🎯 建議 Subagent: 🔴 security-infrastructure-auditor
-```
-
-#### **If Template: Architecture (`architecture`)**
-```
-🏗️ Architecture Template Compliance:
-├── Component separation
-├── Data flow patterns
-├── Scalability considerations
-├── Technology stack decisions
-├── Integration patterns
-└── Performance characteristics
+🏗️ Architecture & Design Template Compliance:
+├── ADR 決策記錄完整性
+├── 系統架構設計 (C4 Model)
+├── API 契約設計
+├── 技術選型合理性
+├── 架構可演進性
+└── 非功能需求覆蓋
 
 🎯 建議 Subagent: 🟡 code-quality-specialist + 🎯 workflow-template-manager
 ```
 
-#### **If Template: Tests (`tests`)**
+#### **階段 3: 詳細設計 (`tests`, `structure`, `dependencies`, `classes`)**
 ```
-🧪 Module Specification & Tests Template Compliance:
-├── Unit test coverage
-├── Integration test scenarios
-├── Mock/stub strategies
-├── Test data management
-├── Continuous testing setup
-└── Performance benchmarks
+🔧 Detailed Design Template Compliance:
+├── 模組規格與契約設計
+├── 專案結構組織
+├── 檔案依賴關係分析
+├── 類別關係設計 (UML)
+├── 測試案例定義
+└── 介面設計完整性
 
-🎯 建議 Subagent: 🟢 test-automation-engineer
+🎯 建議 Subagent: 🟢 test-automation-engineer + 🟡 code-quality-specialist
+```
+
+#### **階段 4: 開發品質 (`code-review`, `frontend-arch`, `frontend-ia`)**
+```
+💻 Development Quality Template Compliance:
+├── Code Review 檢查清單
+├── 前端架構規範
+├── 前端信息架構 (IA)
+├── 組件設計模式
+├── 用戶旅程定義
+└── 重構機會識別
+
+🎯 建議 Subagent: 🟡 code-quality-specialist + 🎨 e2e-validation-specialist
+```
+
+#### **階段 5: 安全部署 (`security`, `deployment`)**
+```
+🛡️ Security & Deployment Template Compliance:
+├── 安全檢查清單完成度
+├── OWASP 合規性
+├── CI/CD 管線設定
+├── 部署策略定義
+├── 監控告警配置
+└── 回滾機制驗證
+
+🎯 建議 Subagent: 🔴 security-infrastructure-auditor + 🚀 deployment-operations-engineer
+```
+
+#### **階段 6: 維護管理 (`documentation`, `wbs`)**
+```
+📚 Maintenance & Management Template Compliance:
+├── 技術文檔完整性
+├── WBS 工作分解結構
+├── 里程碑追蹤
+├── 知識庫維護
+├── 操作手冊 (Runbook)
+└── 團隊協作流程
+
+🎯 建議 Subagent: 📝 documentation-specialist + 🎯 workflow-template-manager
 ```
 
 ## 📊 Compliance Report

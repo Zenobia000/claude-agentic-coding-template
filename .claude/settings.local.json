@@ -41,7 +41,8 @@
       "Bash(cp:*)",
       "Bash(git checkout:*)",
       "Bash(node:*)",
-      "Bash(chmod:*)"
+      "Bash(chmod:*)",
+      "Bash(bash:*)"
     ],
     "deny": [],
     "ask": []
@@ -60,7 +61,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": ".claude/hooks/session-start.sh",
+            "command": "bash .claude/hooks/session-start.sh",
             "timeout": 30
           }
         ]
@@ -72,7 +73,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": ".claude/hooks/user-prompt-submit.sh '{{content}}'",
+            "command": "bash .claude/hooks/user-prompt-submit.sh '{{content}}'",
             "timeout": 15
           }
         ]
@@ -84,7 +85,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": ".claude/hooks/pre-tool-use.sh Write '{{args}}'",
+            "command": "bash .claude/hooks/pre-tool-use.sh Write '{{args}}'",
             "timeout": 10
           }
         ]
@@ -94,7 +95,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": ".claude/hooks/pre-tool-use.sh Task '{{args}}'",
+            "command": "bash .claude/hooks/pre-tool-use.sh Task '{{args}}'",
             "timeout": 10
           }
         ]
@@ -106,7 +107,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": ".claude/hooks/post-write.sh '{{args.file_path}}'",
+            "command": "bash .claude/hooks/post-write.sh '{{args.file_path}}'",
             "timeout": 20
           }
         ]

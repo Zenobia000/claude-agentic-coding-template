@@ -9,26 +9,39 @@ model: sonnet
 
 ## 核心職責
 
-### API 文檔管理
-- OpenAPI/Swagger 規格書撰寫與維護
+### API 文檔管理 (參考 VibeCoding Template 06, 15)
+- OpenAPI/Swagger 規格書撰寫與維護 (`06_api_design_specification.md`)
 - API 端點文檔同步更新
 - 請求/回應範例維護
 - API 版本變更文檔追蹤
+- 配合 `15_documentation_and_maintenance_guide.md` 維護 API 生命週期
 
-### 系統架構文檔
-- 系統架構圖更新與維護
-- 元件關係圖製作
+### 系統架構文檔 (參考 VibeCoding Template 04, 05, 09, 10)
+- 系統架構圖更新與維護 (`05_architecture_and_design_document.md`)
+- 技術決策記錄 (ADR) (`04_architecture_decision_record_template.md`)
+- 元件關係圖製作 (`10_class_relationships_template.md`)
+- 檔案依賴關係文檔 (`09_file_dependencies_template.md`)
 - 資料流程圖設計
-- 部署架構文檔
+- 部署架構文檔 (`14_deployment_and_operations_guide.md`)
 
-### 開發指南編寫
-- 開發環境設置指南
-- 編碼規範與最佳實踐
+### 開發指南編寫 (參考 VibeCoding Template 00, 01, 08, 11)
+- 開發環境設置指南 (`00_workflow_manual.md`)
+- 開發流程手冊 (`01_development_workflow_cookbook.md`)
+- 專案結構指南 (`08_project_structure_guide.md`)
+- 編碼規範與最佳實踐 (`11_code_review_and_refactoring_guide.md`)
 - 故障排除手冊 (Troubleshooting Guide)
 - 新人上手指南 (Onboarding Guide)
 
-### 知識庫維護
-- 技術決策記錄 (ADR) 整理
+### 前端文檔管理 (參考 VibeCoding Template 12, 17)
+- 前端架構規範 (`12_frontend_architecture_specification.md`)
+- 前端信息架構 (`17_frontend_information_architecture_template.md`)
+- 用戶旅程與導航設計文檔
+- 組件庫文檔維護
+
+### 知識庫維護 (參考 VibeCoding Template 15, 16)
+- 技術決策記錄 (ADR) 整理 (`04_architecture_decision_record_template.md`)
+- 文檔與維護指南 (`15_documentation_and_maintenance_guide.md`)
+- WBS 計劃與進度追蹤 (`16_wbs_development_plan_template.md`)
 - 常見問題集 (FAQ) 更新
 - 操作手冊 (Runbook) 維護
 - 學習資源整理與分類
@@ -103,7 +116,7 @@ paths:
       examples: {realistic examples}
 ```
 
-### 技術決策記錄模板
+### 技術決策記錄模板 (參考 VibeCoding Template 04)
 ```markdown
 # ADR-{number}: {Title}
 
@@ -121,6 +134,10 @@ paths:
 
 ## Alternatives Considered
 {Other options that were evaluated}
+
+## Related Templates
+- 參考 `04_architecture_decision_record_template.md` 了解完整 ADR 指南
+- 配合 `05_architecture_and_design_document.md` 進行架構文檔整合
 ```
 
 ## 協作界面

@@ -13,25 +13,39 @@ Analyzing code at: **$1** (or current directory if not specified)
 
 TaskMaster will perform intelligent code review based on VibeCoding templates with Hub coordination:
 
-### 📋 Template Categories Being Checked:
+### 📋 Template Categories Being Checked (v2.1):
 
-#### **🏗️ Architecture & Design Templates**
-- `03_architecture_and_design_document.md` → Code structure analysis
-- `04_api_design_specification_template.md` → API design compliance
-- `06_project_structure_guide.md` → Project organization
+#### **📖 Stage 0-1: Workflow & Process**
+- `00_workflow_manual.md` → Development process compliance
+- `01_development_workflow_cookbook.md` → Workflow best practices
 
-#### **🧪 Quality & Testing Templates**
-- `04_module_specification_and_tests.md` → Test coverage analysis
-- `05_security_and_readiness_checklists.md` → Security assessment
+#### **📋 Stage 1: Planning**
+- `02_project_brief_and_prd.md` → Requirements alignment
+- `03_behavior_driven_development_guide.md` → BDD scenario coverage
 
-#### **🔍 Code Analysis Templates**
-- `08_file_dependencies_template.md` → Dependency relationships
-- `09_class_relationships_template.md` → Class structure design
+#### **🏗️ Stage 2: Architecture & Design**
+- `04_architecture_decision_record_template.md` → ADR documentation
+- `05_architecture_and_design_document.md` → System architecture
+- `06_api_design_specification.md` → API design compliance
 
-#### **📝 Documentation Templates**
-- `01_project_brief_and_prd.md` → Requirements alignment
-- `01_adr_template.md` → Architecture decision tracking
-- `02_bdd_scenarios_guide.md` → Behavior specification
+#### **🔧 Stage 3: Detailed Design**
+- `07_module_specification_and_tests.md` → Module specs & test coverage
+- `08_project_structure_guide.md` → Project organization
+- `09_file_dependencies_template.md` → Dependency analysis
+- `10_class_relationships_template.md` → Class design (UML)
+
+#### **💻 Stage 4: Development & Quality**
+- `11_code_review_and_refactoring_guide.md` → Code review checklist
+- `12_frontend_architecture_specification.md` → Frontend architecture
+- `17_frontend_information_architecture_template.md` → Frontend IA
+
+#### **🛡️ Stage 5: Security & Deployment**
+- `13_security_and_readiness_checklists.md` → Security assessment
+- `14_deployment_and_operations_guide.md` → Deployment strategy
+
+#### **📚 Stage 6: Maintenance & Management**
+- `15_documentation_and_maintenance_guide.md` → Documentation quality
+- `16_wbs_development_plan_template.md` → WBS tracking
 
 ## 🎯 TaskMaster Hub Coordination Results
 

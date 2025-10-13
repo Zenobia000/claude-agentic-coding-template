@@ -1,0 +1,43 @@
+{
+  "projectContext": {
+    "name": "TestProject",
+    "startDate": "2025-09-25T10:56:14.375Z"
+  },
+  "currentTask": null,
+  "todos": [
+    {
+      "id": "task-001",
+      "title": "產生系統架構文檔",
+      "description": "基於 PRD 生成詳細的系統架構設計文檔，供駕駛員審查",
+      "status": "pending",
+      "assignedAgent": null,
+      "startTime": null,
+      "endTime": null,
+      "blockers": [],
+      "progress": 0
+    },
+    {
+      "id": "task-002",
+      "title": "產生模組規格文檔",
+      "description": "基於架構設計生成模組規格文檔，供駕駛員審查",
+      "status": "pending",
+      "assignedAgent": null,
+      "startTime": null,
+      "endTime": null,
+      "blockers": [],
+      "progress": 0
+    },
+    {
+      "id": "task-003",
+      "title": "**等待駕駛員審查 Phase 1-2 文檔**",
+      "description": "駕駛員需要審查所有 Phase 1-2 產生的文檔並確認後，才能進入開發階段",
+      "status": "pending",
+      "assignedAgent": null,
+      "startTime": null,
+      "endTime": null,
+      "blockers": [],
+      "progress": 0
+    }
+  ],
+  "lastUpdated": "2025-09-25T10:56:14.375Z"
+}

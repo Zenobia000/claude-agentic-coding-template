@@ -46,11 +46,11 @@ allowed-tools: Read(/**), Write(/**), Edit(/**), Bash(*), Glob(*), Grep(*)
 📝 專案描述: [從 CLAUDE_TEMPLATE 繼承]
 🏗️ 專案類型: [基於 7問分析判定]
 
-📚 載入的 VibeCoding 範本:
-├── 06_project_structure_guide.md (相關度: 95%)
-├── 03_architecture_and_design_document.md (相關度: 88%)
-├── 04_module_specification_and_tests.md (相關度: 82%)
-├── 05_security_and_readiness_checklists.md (相關度: 75%)
+📚 載入的 VibeCoding 範本 (v2.1):
+├── 08_project_structure_guide.md (相關度: 95%)
+├── 05_architecture_and_design_document.md (相關度: 88%)
+├── 07_module_specification_and_tests.md (相關度: 82%)
+├── 13_security_and_readiness_checklists.md (相關度: 75%)
 └── [其他相關範本...]
 
 📝 生成的文檔導向任務列表: [計算中...]

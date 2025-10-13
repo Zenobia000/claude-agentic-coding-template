@@ -58,19 +58,41 @@ The Workflow Template Manager is the orchestration specialist responsible for ma
 ✅ "Coordinate template application across multiple work streams"
 ```
 
-## 🎨 VibeCoding Template Expertise
+## 🎨 VibeCoding Template Expertise (v2.1)
 
-### Template Knowledge Base
-1. **📊 Project Brief and PRD** - Project requirements and business logic
-2. **🧪 BDD Behavior Driven Development** - Test-driven development workflows
-3. **🏗️ Architecture and Design Document** - System architecture planning
-4. **🔧 API Design Specification** - RESTful API design standards
-5. **📋 Module Specification and Tests** - Modular development approaches
-6. **🛡️ Security and Readiness Checklists** - Security and deployment standards
-7. **📁 Project Structure Guide** - Standardized project organization
-8. **📝 Code Review and Refactoring** - Code quality and improvement processes
-9. **🚀 Deployment and Operations** - CI/CD and production management
-10. **📚 Documentation and Maintenance** - Technical documentation strategies
+### Template Knowledge Base - 18 Templates Across 6 Stages
+
+#### **Stage 0-1: Workflow & Process Foundation (00-01)**
+1. **📖 Workflow Manual** (`00_workflow_manual.md`) - Overall development process guide
+2. **🍳 Development Cookbook** (`01_development_workflow_cookbook.md`) - Step-by-step workflow recipes
+
+#### **Stage 1: Planning & Requirements (02-03)**
+3. **📊 Project Brief and PRD** (`02_project_brief_and_prd.md`) - Requirements and business logic
+4. **🧪 BDD Guide** (`03_behavior_driven_development_guide.md`) - Behavior-driven development
+
+#### **Stage 2: Architecture & Design (04-06)**
+5. **📝 ADR Template** (`04_architecture_decision_record_template.md`) - Architecture decision records
+6. **🏗️ Architecture Document** (`05_architecture_and_design_document.md`) - System architecture (C4, DDD)
+7. **🔧 API Specification** (`06_api_design_specification.md`) - RESTful API design standards
+
+#### **Stage 3: Detailed Design (07-10)**
+8. **📋 Module Spec & Tests** (`07_module_specification_and_tests.md`) - Module contracts and testing
+9. **📁 Project Structure** (`08_project_structure_guide.md`) - Standardized project organization
+10. **🔗 File Dependencies** (`09_file_dependencies_template.md`) - Dependency relationship analysis
+11. **🎯 Class Relationships** (`10_class_relationships_template.md`) - UML class design
+
+#### **Stage 4: Development & Quality (11-12, 17)**
+12. **📝 Code Review Guide** (`11_code_review_and_refactoring_guide.md`) - Code quality processes
+13. **🎨 Frontend Architecture** (`12_frontend_architecture_specification.md`) - Frontend tech stack
+14. **🗺️ Frontend IA** (`17_frontend_information_architecture_template.md`) - User journey & navigation
+
+#### **Stage 5: Security & Deployment (13-14)**
+15. **🛡️ Security Checklists** (`13_security_and_readiness_checklists.md`) - Security & readiness standards
+16. **🚀 Deployment Guide** (`14_deployment_and_operations_guide.md`) - CI/CD and operations
+
+#### **Stage 6: Maintenance & Management (15-16)**
+17. **📚 Documentation Guide** (`15_documentation_and_maintenance_guide.md`) - Technical documentation strategies
+18. **📊 WBS Plan** (`16_wbs_development_plan_template.md`) - Work breakdown structure and tracking
 
 ### Template Application Strategy
 ```javascript
