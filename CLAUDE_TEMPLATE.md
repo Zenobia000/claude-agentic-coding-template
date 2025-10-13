@@ -501,6 +501,94 @@ chmod +x .git/hooks/post-commit
 echo "✅ 自動推送已設定 - 每次提交後將備份到 GitHub"
 ```
 
+### 🔐 **認證設定建議**
+
+為了讓自動推送正常運作,需要設定 GitHub 認證。以下是三種推薦方法:
+
+**選項 1: 使用 GitHub CLI (推薦 - 最簡單且最安全)**
+```bash
+# 檢查是否已安裝 gh
+gh --version
+
+# 如果未安裝:
+# Windows: winget install GitHub.cli
+# macOS: brew install gh
+# Linux: sudo apt install gh
+
+# 登入 GitHub (會開啟瀏覽器進行認證)
+gh auth login
+
+# 設定 git 使用 gh 作為認證助手
+git config --global credential.https://github.com.helper ""
+git config --global credential.https://github.com.helper "!/usr/bin/gh auth git-credential"
+
+# 驗證設定
+gh auth status
+```
+
+**選項 2: 使用 SSH Key (推薦 - 適合進階使用者)**
+```bash
+# 產生 SSH key (如果還沒有)
+ssh-keygen -t ed25519 -C "your_email@example.com"
+
+# 啟動 ssh-agent 並添加 key
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+
+# 複製公鑰
+cat ~/.ssh/id_ed25519.pub
+# 將輸出的公鑰添加到 GitHub: Settings > SSH and GPG keys > New SSH key
+
+# 更改 remote URL 為 SSH 格式
+git remote set-url origin git@github.com:username/repo-name.git
+
+# 測試 SSH 連接
+ssh -T git@github.com
+```
+
+**選項 3: 使用 Personal Access Token (適用於自動化)**
+```bash
+# 1. 在 GitHub 上生成 Personal Access Token:
+#    Settings > Developer settings > Personal access tokens > Generate new token
+#    需要勾選 'repo' 權限
+
+# 2. 使用 Git Credential Manager (推薦)
+git config --global credential.helper manager-core
+
+# 或使用 credential.helper store (會將 token 以明文存儲)
+git config --global credential.helper store
+
+# 3. 下次 push 時,使用 token 作為密碼
+# Username: your_github_username
+# Password: your_personal_access_token
+
+# 驗證設定
+git config --list | grep credential
+```
+
+**推薦選項比較:**
+| 方法 | 優點 | 缺點 | 適用場景 |
+|------|------|------|----------|
+| GitHub CLI | 最簡單,自動管理 token,安全 | 需要安裝額外工具 | 一般開發者(推薦) |
+| SSH Key | 無需密碼,高安全性 | 初次設定較複雜 | 進階使用者,多台電腦 |
+| PAT | 適合 CI/CD,細粒度權限控制 | 需要手動管理 token | 自動化腳本,CI/CD |
+
+**WSL 使用者特別注意:**
+如果你在 WSL 中使用,建議使用 GitHub CLI,因為它會自動處理認證儲存。
+
+```bash
+# WSL 中安裝 GitHub CLI
+curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+sudo apt update
+sudo apt install gh
+
+# 登入並設定
+gh auth login
+git config --global credential.https://github.com.helper ""
+git config --global credential.https://github.com.helper "!/usr/bin/gh auth git-credential"
+```
+
 ### 📋 **GITHUB 備份工作流程** (強制性)
 > **⚠️ CLAUDE CODE 必須遵循此模式：**
 
