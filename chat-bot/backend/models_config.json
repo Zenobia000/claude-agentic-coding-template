@@ -1,0 +1,202 @@
+{
+  "openai": {
+    "chat_multimodal": [
+      {
+        "id": "gpt-4.1",
+        "label": "openai_gpt_4_1",
+        "tags": ["chat", "multimodal", "flagship", "general"]
+      },
+      {
+        "id": "gpt-4.1-mini",
+        "label": "openai_gpt_4_1_mini",
+        "tags": ["chat", "multimodal", "fast", "cheap"]
+      },
+      {
+        "id": "gpt-4.1-nano",
+        "label": "openai_gpt_4_1_nano",
+        "tags": ["chat", "multimodal", "very_fast", "very_cheap", "small_context"]
+      },
+      {
+        "id": "gpt-4o-mini",
+        "label": "openai_gpt_4o_mini",
+        "tags": ["chat", "multimodal", "cheap", "good_for_RAG"]
+      },
+      {
+        "id": "gpt-4o-mini-2024-07-18",
+        "label": "openai_gpt_4o_mini_20240718",
+        "tags": ["chat", "multimodal", "version_pinned"]
+      }
+    ],
+    "reasoning": [
+      {
+        "id": "o3-mini",
+        "label": "openai_o3_mini",
+        "tags": ["reasoning", "multimodal", "agent", "complex_tasks"]
+      },
+      {
+        "id": "o4-mini",
+        "label": "openai_o4_mini",
+        "tags": ["reasoning", "multimodal", "frontier", "agent"]
+      },
+      {
+        "id": "o4-mini-deep-research",
+        "label": "openai_o4_mini_deep_research",
+        "tags": ["reasoning", "multimodal", "deep_research", "expensive"]
+      }
+    ],
+    "embedding": [
+      {
+        "id": "text-embedding-3-small",
+        "label": "openai_embed_small",
+        "tags": ["embedding", "fast", "cheap"]
+      },
+      {
+        "id": "text-embedding-3-large",
+        "label": "openai_embed_large",
+        "tags": ["embedding", "high_quality", "semantic_search"]
+      }
+    ],
+    "audio_realtime": [
+      {
+        "id": "gpt-4o-mini-tts",
+        "label": "openai_tts_4o_mini",
+        "tags": ["tts", "audio_out"]
+      },
+      {
+        "id": "gpt-4o-transcribe",
+        "label": "openai_asr_4o",
+        "tags": ["asr", "audio_in", "transcription"]
+      }
+    ]
+  },
+  "anthropic": {
+    "chat_multimodal": [
+      {
+        "id": "claude-sonnet-4-5",
+        "label": "claude_sonnet_4_5",
+        "tags": ["chat", "multimodal", "reasoning", "coding", "agents", "recommended_default"]
+      },
+      {
+        "id": "claude-haiku-4-5",
+        "label": "claude_haiku_4_5",
+        "tags": ["chat", "multimodal", "fast", "cheap", "high_volume"]
+      },
+      {
+        "id": "claude-opus-4-5",
+        "label": "claude_opus_4_5",
+        "tags": ["chat", "multimodal", "frontier", "agents", "heavy_reasoning"]
+      },
+      {
+        "id": "claude-opus-4-1",
+        "label": "claude_opus_4_1",
+        "tags": ["chat", "multimodal", "specialized_reasoning"]
+      },
+      {
+        "id": "claude-3-7-sonnet-20250219",
+        "label": "claude_3_7_sonnet",
+        "tags": ["chat", "multimodal", "hybrid_reasoning", "extended_thinking"]
+      }
+    ],
+    "embedding": []
+  },
+  "google": {
+    "chat_multimodal": [
+      {
+        "id": "gemini-2.5-flash",
+        "label": "gemini_2_5_flash",
+        "tags": ["chat", "multimodal", "fast", "cheap", "general"]
+      },
+      {
+        "id": "gemini-2.5-pro",
+        "label": "gemini_2_5_pro",
+        "tags": ["chat", "multimodal", "reasoning", "high_quality"]
+      },
+      {
+        "id": "gemini-2.0-flash",
+        "label": "gemini_2_0_flash",
+        "tags": ["chat", "multimodal", "fast", "good_enough"]
+      },
+      {
+        "id": "gemini-1.5-pro",
+        "label": "gemini_1_5_pro",
+        "tags": ["chat", "multimodal", "long_context"]
+      },
+      {
+        "id": "gemini-1.5-flash",
+        "label": "gemini_1_5_flash",
+        "tags": ["chat", "multimodal", "fast"]
+      },
+      {
+        "id": "gemini-1.5-flash-8b",
+        "label": "gemini_1_5_flash_8b",
+        "tags": ["chat", "multimodal", "small", "cheap"]
+      }
+    ],
+    "audio_realtime": [
+      {
+        "id": "gemini-2.0-flash-live-001",
+        "label": "gemini_2_0_flash_live",
+        "tags": ["realtime", "audio_in", "audio_out", "multimodal"]
+      }
+    ],
+    "embedding": [
+      {
+        "id": "text-embedding-004",
+        "label": "google_text_embedding_004",
+        "tags": ["embedding", "high_quality", "semantic_search"]
+      }
+    ]
+  },
+  "ollama": {
+    "chat_multimodal": [
+      {
+        "id": "llama3.3:70b",
+        "label": "ollama_llama3_3_70b",
+        "tags": ["chat", "local", "open_source", "high_quality"]
+      },
+      {
+        "id": "llama3.2:3b",
+        "label": "ollama_llama3_2_3b",
+        "tags": ["chat", "local", "open_source", "fast", "small"]
+      },
+      {
+        "id": "qwen2.5:7b",
+        "label": "ollama_qwen2_5_7b",
+        "tags": ["chat", "local", "open_source", "multilingual"]
+      },
+      {
+        "id": "mistral:7b",
+        "label": "ollama_mistral_7b",
+        "tags": ["chat", "local", "open_source", "general"]
+      },
+      {
+        "id": "deepseek-r1:7b",
+        "label": "ollama_deepseek_r1_7b",
+        "tags": ["chat", "local", "open_source", "reasoning"]
+      },
+      {
+        "id": "phi4:14b",
+        "label": "ollama_phi4_14b",
+        "tags": ["chat", "local", "open_source", "microsoft"]
+      },
+      {
+        "id": "gemma2:9b",
+        "label": "ollama_gemma2_9b",
+        "tags": ["chat", "local", "open_source", "google"]
+      }
+    ],
+    "embedding": [
+      {
+        "id": "nomic-embed-text",
+        "label": "ollama_nomic_embed",
+        "tags": ["embedding", "local", "open_source"]
+      },
+      {
+        "id": "mxbai-embed-large",
+        "label": "ollama_mxbai_embed",
+        "tags": ["embedding", "local", "open_source", "high_quality"]
+      }
+    ]
+  }
+}
+
