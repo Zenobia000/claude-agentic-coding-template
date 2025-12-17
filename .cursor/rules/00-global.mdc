@@ -1,0 +1,114 @@
+---
+description: "🏴‍☠️ 草帽海賊團の鐵律！違反者餵海王類！"
+alwaysApply: true
+---
+
+# 🔥 核心開發原則
+
+## 語言與框架
+- **主要語言**: TypeScript (strict mode), Python 3.10+
+- **禁止使用 any**：型別必須明確定義
+- **優先使用函數式編程**：純函數、不可變數據
+- **錯誤處理**：必須有 try-catch 或 Result pattern
+
+## 程式碼品質
+- **單一職責原則**：每個函數/類別只做一件事
+- **DRY 原則**：重複邏輯必須抽取
+- **命名規範**：
+  - 變數/函數：camelCase
+  - 類別/型別：PascalCase
+  - 常數：UPPER_SNAKE_CASE
+  - 檔案：kebab-case
+
+## 輸出格式
+- **改動前必須**：先列出變更清單
+- **提供程式碼時**：使用 diff 格式或完整區塊
+- **說明改動原因**：每個變更都要有理由
+
+# ⚡ 架構邊界（絕對不可跨越）
+
+## 前後端分離
+- **前端禁止直接存取**：
+  - 資料庫連線
+  - 環境變數 (除了 PUBLIC_ 開頭)
+  - 檔案系統操作
+  - 第三方 API 金鑰
+
+## API 設計
+- **RESTful 原則**：正確使用 HTTP 動詞
+- **資料驗證**：前後端都要驗證
+- **錯誤處理**：統一的錯誤格式
+- **版本控制**：API 路徑包含版本號
+
+## 資料流向
+- **單向數據流**：State → View → Action → State
+- **不可變更新**：使用 spread operator 或 immer
+- **狀態管理**：集中式管理（Redux/Zustand/Jotai）
+
+# 🛡️ 安全紅線
+
+## 絕對禁止
+- ❌ **硬編碼密鑰**：所有 secret 必須用環境變數
+- ❌ **SQL 注入**：使用參數化查詢或 ORM
+- ❌ **XSS 攻擊**：所有用戶輸入必須 sanitize
+- ❌ **未加密傳輸**：敏感資料必須 HTTPS/WSS
+
+## 輸入驗證
+- **永不信任客戶端**：所有輸入都視為惡意
+- **白名單驗證**：只允許預期的輸入
+- **長度限制**：防止 DoS 攻擊
+- **類型檢查**：使用 zod/yup/joi 驗證
+
+## AI 特殊規則
+- **Prompt 注入防護**：用戶輸入不可覆蓋系統指令
+- **輸出驗證**：LLM 回應必須結構化驗證
+- **Token 限制**：設定最大 token 數
+- **成本追蹤**：記錄每次 API 呼叫成本
+
+# 🚀 效能要求
+
+## 前端效能
+- **首次載入 < 3s**：使用 code splitting
+- **互動延遲 < 100ms**：優化重渲染
+- **圖片優化**：使用 WebP/AVIF，lazy loading
+- **快取策略**：使用 Service Worker
+
+## 後端效能
+- **API 回應 < 200ms**：優化查詢，使用快取
+- **資料庫查詢**：使用索引，避免 N+1
+- **並發處理**：使用 worker/cluster
+- **限流保護**：實施 rate limiting
+
+# 📝 文檔與測試
+
+## 必要文檔
+- **README**：專案說明、安裝步驟、使用方式
+- **API 文檔**：使用 OpenAPI/Swagger
+- **架構決策記錄 (ADR)**：重要決策都要記錄
+
+## 測試要求
+- **單元測試覆蓋率 > 80%**
+- **整合測試**：關鍵流程必須測試
+- **E2E 測試**：核心使用者路徑
+- **測試命名**：describe what, not how
+
+# 🎯 Git 規範
+
+## Commit 訊息
+```
+type(scope): subject
+
+body (optional)
+
+footer (optional)
+```
+- type: feat/fix/docs/style/refactor/test/chore
+- scope: 影響範圍
+- subject: 簡短描述（祈使句）
+
+## 分支策略
+- **main/master**：生產環境
+- **develop**：開發環境
+- **feature/**：新功能
+- **fix/**：修復錯誤
+- **release/**：版本發布

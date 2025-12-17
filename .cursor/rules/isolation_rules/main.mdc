@@ -1,0 +1,177 @@
+# 🔍 ISOLATION-FOCUSED MEMORY BANK SYSTEM
+
+🚨 CRITICAL RULE: MEMORY BANK CREATION IS MANDATORY 🚨
+Memory Bank MUST be created BEFORE any other operation in ANY mode
+NO process can continue without verifying Memory Bank existence
+
+> **TL;DR (Updated 2025):** This system uses Cursor's Custom Slash Commands (`.cursor/commands/`) to implement a phased workflow. Each command (`/van`, `/plan`, `/creative`, `/implement`, `/reflect`, `/archive`) represents a distinct development phase with specific responsibilities. The system uses visual Mermaid diagrams and Memory Bank files to maintain context between phases.
+
+## 📢 IMPORTANT UPDATE (2025)
+
+**Custom Modes → Custom Slash Commands**
+
+Cursor has replaced "Custom Modes" with "Custom Slash Commands" in 2025. This system has been updated accordingly:
+
+- ✅ **Before (2024)**: Custom Modes in Settings → Features → Chat
+- ✅ **Now (2025)**: Custom Slash Commands in `.cursor/commands/` directory
+- ✅ **How to Use**: Type `/van`, `/plan`, `/creative`, `/implement`, `/reflect`, or `/archive` in Cursor AI chat
+- ✅ **Rules Still Apply**: `.cursor/rules/` directory continues to define project-wide rules
+
+## 🧭 SLASH COMMAND WORKFLOW MAP
+
+```mermaid
+graph TD
+    subgraph Commands["Cursor Custom Slash Commands"]
+        VAN["/van<br>Initialization"] --> PLAN["/plan<br>Task Planning"]
+        PLAN --> Creative["/creative<br>Design Decisions"]
+        Creative --> Implement["/implement<br>Code Implementation"]
+        Implement --> Reflect["/reflect<br>Task Review"]
+        Reflect --> Archive["/archive<br>Documentation"]
+    end
+    
+    VAN -.->|"Command File"| VANCmd[".cursor/commands/van.md"]
+    PLAN -.->|"Command File"| PLANCmd[".cursor/commands/plan.md"]
+    Creative -.->|"Command File"| CreativeCmd[".cursor/commands/creative.md"]
+    Implement -.->|"Command File"| ImplementCmd[".cursor/commands/implement.md"]
+    Reflect -.->|"Command File"| ReflectCmd[".cursor/commands/reflect.md"]
+    Archive -.->|"Command File"| ArchiveCmd[".cursor/commands/archive.md"]
+    
+    VANCmd -.->|"References"| Rules["Project Rules<br>.cursor/rules/"]
+    PLANCmd -.->|"References"| Rules
+    CreativeCmd -.->|"References"| Rules
+    ImplementCmd -.->|"References"| Rules
+    ReflectCmd -.->|"References"| Rules
+    ArchiveCmd -.->|"References"| Rules
+```
+
+## 🚀 Quick Start (2025)
+
+1. **Initialize Project**: Type `/van` in Cursor AI chat to start Memory Bank creation
+2. **Plan Tasks**: Type `/plan` to break down work into actionable tasks
+3. **Design Architecture**: Type `/creative` to document design decisions
+4. **Implement Code**: Type `/implement` to write code with progress tracking
+5. **Review Work**: Type `/reflect` to conduct retrospective
+6. **Document & Archive**: Type `/archive` to finalize documentation
+
+## 📋 MEMORY BANK VERIFICATION - MANDATORY IN ALL COMMANDS
+
+```mermaid
+graph TD
+    Start["Command Invoked<br>(e.g., /van)"] --> CheckMemBank{"Memory Bank<br>Exists?"}
+    
+    CheckMemBank -->|"No"| CreateMemBank["CREATE MEMORY BANK<br>[CRITICAL STEP]"]
+    CheckMemBank -->|"Yes"| VerifyMemBank["Verify Memory Bank<br>Structure"]
+    
+    CreateMemBank --> VerifyCreation{"Creation<br>Successful?"}
+    VerifyCreation -->|"No"| AbortAll["⛔ ABORT ALL OPERATIONS<br>Fix Memory Bank First"]
+    VerifyCreation -->|"Yes"| VerifyMemBank
+    
+    VerifyMemBank --> StructureCheck{"Structure<br>Valid?"}
+    StructureCheck -->|"No"| FixStructure["Fix Memory Bank<br>Structure"]
+    StructureCheck -->|"Yes"| ContinueCmd["Continue with<br>Command Operations"]
+    
+    FixStructure --> VerifyFix{"Fix<br>Successful?"}
+    VerifyFix -->|"No"| AbortAll
+    VerifyFix -->|"Yes"| ContinueCmd
+    
+    style CheckMemBank fill:#ff0000,stroke:#990000,color:white,stroke-width:3px
+    style CreateMemBank fill:#ff0000,stroke:#990000,color:white,stroke-width:3px
+    style VerifyCreation fill:#ff0000,stroke:#990000,color:white,stroke-width:3px
+    style AbortAll fill:#ff0000,stroke:#990000,color:white,stroke-width:3px
+    style StructureCheck fill:#ff0000,stroke:#990000,color:white,stroke-width:3px
+    style FixStructure fill:#ff5555,stroke:#dd3333,color:white
+    style VerifyFix fill:#ff5555,stroke:#dd3333,color:white
+```
+
+## 📚 COMMAND FILES REFERENCE
+
+Each slash command has its own detailed guide in `.cursor/commands/`:
+
+- `/van` → `.cursor/commands/van.md` - Memory Bank initialization
+- `/plan` → `.cursor/commands/plan.md` - Task planning and WBS
+- `/creative` → `.cursor/commands/creative.md` - Design decisions and architecture
+- `/implement` → `.cursor/commands/implement.md` - Code implementation with progress tracking
+- `/reflect` → `.cursor/commands/reflect.md` - Retrospective and review
+- `/archive` → `.cursor/commands/archive.md` - Documentation and knowledge preservation
+
+## 🔄 FILE STATE VERIFICATION
+
+Memory Bank files maintain continuity between slash commands:
+
+```mermaid
+graph TD
+    subgraph "Memory Bank Files"
+        tasks["tasks.md<br>Source of Truth"]
+        active["activeContext.md<br>Current Focus"]
+        creative["creative-*.md<br>Design Decisions"]
+        progress["progress.md<br>Implementation Status"]
+    end
+    
+    VAN["/van"] -->|"Creates/Updates"| tasks
+    VAN -->|"Creates/Updates"| active
+    
+    PLAN["/plan"] -->|"Reads"| tasks
+    PLAN -->|"Reads"| active
+    PLAN -->|"Updates"| tasks
+    
+    Creative["/creative"] -->|"Reads"| tasks
+    Creative -->|"Creates"| creative
+    Creative -->|"Updates"| tasks
+    
+    Implement["/implement"] -->|"Reads"| tasks
+    Implement -->|"Reads"| creative
+    Implement -->|"Updates"| tasks
+    Implement -->|"Updates"| progress
+    
+    Reflect["/reflect"] -->|"Reads"| tasks
+    Reflect -->|"Reads"| progress
+    Reflect -->|"Updates"| tasks
+    
+    Archive["/archive"] -->|"Reads"| tasks
+    Archive -->|"Reads"| progress
+    Archive -->|"Archives"| creative
+```
+
+## 📋 COMMAND TRANSITION PROTOCOL
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant CurrentCmd as Current Command
+    participant NextCmd as Next Command
+    
+    CurrentCmd->>CurrentCmd: Complete Phase Requirements
+    CurrentCmd->>User: "Phase complete. Type /[next-command]"
+    User->>NextCmd: Type /[next-command]
+    NextCmd->>NextCmd: Verify Required File State
+    
+    alt File State Valid
+        NextCmd->>User: "Continuing from previous phase..."
+    else File State Invalid
+        NextCmd->>User: "Required files not in expected state"
+        NextCmd->>User: "Please run /[previous-command] to complete prerequisites"
+    end
+```
+
+## 💻 PLATFORM-SPECIFIC COMMANDS
+
+| Action | Windows | Mac/Linux |
+|--------|---------|-----------|
+| Create file | `echo. > file.ext` | `touch file.ext` |
+| Create directory | `mkdir directory` | `mkdir -p directory` |
+| Change directory | `cd directory` | `cd directory` |
+| List files | `dir` | `ls` |
+| Show file content | `type file.ext` | `cat file.ext` |
+
+## ⚠️ COMMAND EFFICIENCY GUIDANCE
+
+For optimal performance, use efficient command chaining when appropriate:
+
+```
+# Efficient command chaining examples:
+mkdir -p project/{src,tests,docs} && cd project
+grep "TODO" $(find . -name "*.js")
+npm install && npm start
+```
+
+Refer to [command-execution.mdc](mdc:.cursor/rules/isolation_rules/Core/command-execution.mdc) for detailed guidance.

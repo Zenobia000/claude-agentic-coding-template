@@ -1,372 +1,750 @@
-一句話先講白：**把「技術棧選擇 + 檔案拓撲 + 規範 + AI 安全/評測」全部寫進 Cursor Project Rules + Memory Bank，Copilot 才會像同一個資深工程師在做事，而不是每天失憶重練。** ([Cursor][1])
+# 🏴‍☠️ 海賊王的 Cursor 大秘寶（2025 偉大航道版）
+
+> **「我是要成為編程王的男人！！！」** —— 某個戴草帽的傢伙
+
+**欸！聽好了！我要把 Cursor 變成我的夥伴！不是工具，是夥伴！懂嗎！！**
 
 ---
 
-## 0) 全局拓撲全景圖（先把系統長相定下來）
+## 📜 大秘寶地圖（看不懂就先跟著走！）
+
+1. 【橡膠橡膠の設定拳】你以為你在設定什麼？錯！你在招募船員！
+2. 【三大古代兵器】Rules、Commands、Memory —— 缺一個都會沉船！
+3. 【新世界入門考】Cursor 介面速通（不會游泳也能上船）
+4. 【海軍六式・規則篇】把 AI 從路人訓練成索隆級戰力
+5. 【霸氣覺醒・命令篇】一聲令下，全員行動！
+6. 【歷史正文】Memory Bank —— 羅賓都說重要的東西
+7. 【四皇領域】2025 最強技術棧配置（直接抄就對了）
+8. 【敗者的哀號】20 個會讓你在偉大航道翻船的蠢事
+9. 【海賊修行】讓你的 AI 夥伴越來越強
+10. 【懸賞單模板庫】拿去用！不客氣！
+
+---
+
+# 🚢 第一章：你以為你在設定什麼？笨蛋！是在組建海賊團啊！
+
+**喂！我是蒙其·D·魯夫！**
+
+你知道嗎？一堆笨蛋以為有了 AI 就能變強。
+
+**錯！大錯特錯！**
+
+就像你不能隨便抓個路人就說「你是我的夥伴」一樣！
+AI 也不是你喊它寫 code 它就會聽話的！
+
+**它又不是你的奴隸！它是要成為你夥伴的存在啊！**
+
+我看過一堆蠢貨：
+* 「AI！幫我寫個功能！」→ 結果寫出來的東西連自己都看不懂
+* 「AI 怎麼這麼笨！」→ 廢話！你連航海圖都沒給它，要它怎麼開船？
+* 「為什麼每次都要重新講一遍！」→ 因為你沒有建立船規啊！笨蛋！
+
+**聽著！AI 不是神！它只是個需要你好好帶領的夥伴！**
+
+好啦好啦，我知道你很弱，所以我會教你的。**上船吧！**
+
+---
+
+## 🍖 1.0【肉！我要吃肉！懶人包】（看不懂？沒關係！跟著做就對了！）
+
+**欸！你想讓 AI 變成像索隆一樣可靠的夥伴嗎？**
+
+記住這個超級無敵簡單的口訣：
+
+> **「橡膠橡膠の四大支柱！」**
+> * **Rules = 海賊團規矩**（違反的傢伙餵海王類！）
+> * **Commands = 戰鬥口號**（喊一聲全員就懂！）
+> * **Context = 航海圖**（沒地圖你要怎麼找 ONE PIECE？）
+> * **Prompt = 船長命令**（你不下令，船員要做什麼？）
+
+### 💀【草帽海賊團の緊急自救手冊】
+
+遇到問題怎麼辦？看這裡！
+
+* **AI 在亂寫，像喝醉了一樣？**
+  → **笨蛋！你沒給它航海圖啊！** 快補 Context！
+
+* **寫出來的 code 像海軍的一樣死板？**
+  → **沒有船規的海賊團是散沙！** 快寫 Rules！
+
+* **每次都要重複講一樣的事，煩死了？**
+  → **戰鬥口號都不會喊嗎！** 快做 Commands！
+
+* **AI 完全搞錯方向，往海軍本部衝？**
+  → **你這個船長到底在幹嘛！** 把 Prompt 講清楚啊！
+
+**記住！先讓它聽話，再讓它變強！這就是成為海賊王的第一步！**
+
+---
+
+## ⚡ 1.1【草帽海賊團の船規建立術】別以為你在聊天！你在建立新世界秩序！
+
+**喂！聽好了！Cursor 設定就像偉大航道的層級！**
+
+### 🏴‍☠️【海賊王的權力金字塔】從船長到雜工都要懂！
+
+1. **【懸賞等級】Mode / Agent 權限設定**
+
+   * **這傢伙能幹嘛？是戰鬥員還是音樂家？**
+   * 索隆可以砍人，但你不會讓他煮飯對吧？
+   * **不設權限 = 讓喬巴開船 = 等著翻船吧你！**
+
+2. **【海賊團鐵則】Rules = 絕對不能違反的船規！**
+
+   * **「不准背叛夥伴！」**
+   * **「不准浪費食物！」**
+   * **「不准讓娜美生氣！」**（這個最重要）
+   * 把你不想重複講第二次的廢話，全部寫進去！
+
+3. **【必殺技名稱】Commands = 戰鬥時的暗號！**
+
+   * **「橡膠火箭砲！」= /review-code**
+   * **「三刀流・鬼斬！」= /debug**
+   * **「天候棒・雷電充能！」= /write-tests**
+   * 別再每次戰鬥都要解釋招式了！直接喊名字！
+
+4. **【永久指針】Context = 偉大航道的航海圖！**
+
+   * 你給的檔案、程式碼、文件 = 航海圖
+   * **沒航海圖就出航？那不是勇敢，是白癡！**
+   * 記住！娜美的航海圖比你的命還重要！
+
+5. **【船長命令】Prompt = 今天要去哪個島！**
+
+   * **「目標！魚人島！」**
+   * **「全速前進！空島！」**
+   * 講清楚！不然船員會迷路的！
+
+---
+
+## 🎯 1.2【偉大航道の真相】你按 Enter 的瞬間，到底發生了什麼！
+
+**欸！你以為按個 Enter 就結束了？**
+
+**大錯特錯！**
+
+**那一瞬間，就像我發動「橡膠橡膠の火箭砲」一樣複雜！**
+
+### 💥【超級必殺技の組合公式】
 
 ```text
-[Browser/UI]
-   │  RSC / Client Components
-   ▼
-[Next.js App Router]
-   ├─ Server Actions (write paths)
-   ├─ Route Handlers /api/* (public API)
-   ├─ AI Orchestrator (streaming, tool calling, guardrails)
-   │       ├─ LLM Provider (OpenAI/Anthropic/…)
-   │       ├─ Tools: DB / Vector / Web / Files / Internal APIs
-   │       └─ Policy: injection防護 / PII遮罩 / output schema
-   ▼
-[Data Layer]
-   ├─ Postgres (source of truth) + migrations
-   ├─ Vector (pgvector / managed) + embeddings pipeline
-   ├─ Redis (cache, rate limit, queue)
-   └─ Object Storage (files)
-   ▼
-[Ops Layer]
-   ├─ Observability (logs/metrics/traces + cost)
-   ├─ CI/CD (lint/test/e2e/security)
-   └─ Feature flags + Rollback strategy
+【霸王色霸氣】System + 工具權限
+  + 【海賊團規矩】Rules（誰敢違反就餵海王類）
+  + 【航海圖】Context（娜美畫的，超準的）
+  + 【戰鬥暗號】Command（喊了大家就懂）
+  + 【船長大喊】Prompt（我要吃肉！不對，是寫 Code！）
+= 【超級無敵輸出】AI 的回應
 ```
 
-> 這張圖的意義：**之後任何規則、任何檔案、任何 Copilot 行為，都要能在這張圖裡找到「它在保護哪個邊界」。**
+### 🏴‍☠️【各部件超詳細解說】聽好了！這很重要！
+
+#### 🎯 Prompt = 「我們要去那個島！」
+
+* **「把這個 API 改成超級厲害的 tRPC！」**
+* 就是你現在想做什麼啦！簡單吧！
+
+#### 📍 Context = 「娜美的航海圖」
+
+* 沒給檔案 = 沒航海圖
+* **沒航海圖的下場知道嗎？在偉大航道亂飄三天三夜！**
+* AI 會開始胡言亂語，就像餓了三天的我一樣！
+
+#### ⚔️ Rules = 「海賊團鐵律」
+
+* **「不准動娜美的錢！」**
+* **「不准搶魯夫的肉！」**
+* **「不准在索隆睡覺時吵他！」**
+* 這些規矩寫一次，永遠有效！
+
+#### 🔥 Commands = 「必殺技快捷鍵」
+
+* `/三檔` = 執行超強測試
+* `/見聞色` = 程式碼審查
+* `/武裝色` = 強化防禦（加 Error Handling）
 
 ---
 
-## 1) 2025 技術棧：先發散、再收斂（避免一開始就踩死自己）
+## 🚀 1.3【成為海賊王的修練順序】不靠天賦！靠的是這套無敵流程！
 
-### 1.1 發散：三套「合理」的 2025 組合
+**聽著！要變強不是靠運氣！是靠正確的修練順序！**
 
-**A. 產品/落地優先（推薦預設）**
+### 【橡膠橡膠の四段修練】
 
-* Next.js App Router + React 19（RSC/Server Actions）+ TypeScript
-* AI：Vercel AI SDK（串流、provider 抽換、工具呼叫）
-* DB：Postgres + ORM +（向量：pgvector 或 managed）
-  適合：要快、要穩、要全端一套搞定。 ([nextjs.org][2])
+1. **【第一段：選擇夥伴】先定 Mode**
+   * 這個夥伴能幹嘛？是戰鬥型還是輔助型？
+   * 就像我選索隆當戰鬥員，不會讓他當廚師！
 
-**B. 後端工程優先（大型團隊/複雜 domain）**
+2. **【第二段：建立規矩】寫 Rules**
+   * 船上的鐵律！違反就餵海王類！
+   * 「不准背叛夥伴」這種底線要先說清楚！
 
-* 前端：Next.js / Remix
-* 後端：NestJS/Fastify（獨立 API）+ OpenAPI
-* AI：獨立 AI service（queue + worker）
-  適合：大量 domain service、複雜權限、後端要嚴格分層。
+3. **【第三段：練習合體技】做 Commands**
+   * 把常用的組合技練到閉著眼睛都會！
+   * 就像「橡膠橡膠の暴風雨」一樣順暢！
 
-**C. 邊緣/成本優先（偏 Edge/高併發）**
+4. **【第四段：實戰】下 Prompt**
+   * 真正的戰鬥開始了！
+   * 但因為前面都準備好了，所以超簡單！
 
-* SvelteKit / Next Edge
-* KV/Redis/Queue 重度使用
-* AI：更依賴快取、分段生成、成本治理
-  適合：超高流量、延遲/成本是第一 KPI。
+### 【為什麼這個順序？魯夫的智慧時間】
 
-### 1.2 收斂：我給你的「2025 預設答案」（可直接做規則模板）
+**Prompt 就像今天想吃什麼 = 會變的**
+**Rules/Commands 就像夥伴的羈絆 = 永遠不變！**
 
-* **Runtime：Node.js 24 LTS**（2025/12 仍是 Active LTS，適合團隊長期維運）([Node.js][3])
-* **Frontend：Next.js App Router + React 19**（RSC / Server Actions 成熟，生態完整）([nextjs.org][2])
-* **Language：TypeScript（5.7+ 起跳，嚴格模式）**([typescriptlang.org][4])
-* **AI：Vercel AI SDK 做 streaming + provider 抽換**（避免你未來換模型大整形）([Vercel][5])
-* **Security：OWASP Top 10 for LLM Apps 當你的「AI 版 OWASP」**（把 prompt injection / insecure output handling 當成第一級風險）([OWASP][6])
+**羈絆比飯重要！**（好啦其實肉也很重要）
 
 ---
 
-## 2) 檔案與階層：每一份檔案「存在的理由」（Copilot 才不會亂塞）
+## 💀 1.4【偉大航道翻船實錄】聽聽那些笨蛋的慘叫聲！
 
-> 你要的不是「資料夾漂亮」，是**邊界清楚**：每個檔案只負責一種真相來源。
+**有個菜鳥跑來哭：「魯夫船長！AI 把我的 code 改爛了！」**
 
-### 2.1 建議拓撲（單 repo、可擴到 monorepo）
+我：**「你給它航海圖了嗎？」**
+菜鳥：「...沒有」
+
+我：**「你告訴它哪裡不能碰了嗎？」**
+菜鳥：「...也沒有」
+
+我：**「你有寫測試嗎？」**
+菜鳥：「...測試是什麼？能吃嗎？」
+
+**我大笑三聲：「哈哈哈！」**
+
+**然後一拳把他打飛：「笨蛋！你這樣跟裸奔闖海軍本部有什麼區別！」**
+
+### 【魯夫的超級智慧語錄】
+
+**「想在偉大航道活下來？」**
+**「想快？可以！像我的橡膠火箭砲！」**
+**「想穩？也行！像索隆的三刀流！」**
+
+**但是！但是！但是！**
+
+**你得先有船規（Rules）！**
+**你得先有暗號（Commands）！**
+**你得先有航海圖（Context）！**
+
+**不然你就等著被海王類吃掉吧！嘿嘿嘿！**
+
+---
+
+## 🔥 1.5【海賊王的三大鐵則】背不起來就去當海軍吧！
+
+### 【橡膠橡膠の超級記憶術】
+
+1. **鐵則一：沒有規矩的海賊團是垃圾！**
+   * 先定 Rules！不然 AI 會像暴走的喬巴！
+
+2. **鐵則二：戰鬥暗號要簡單有力！**
+   * Commands 就是必殺技名稱！
+   * 你總不會每次出招都解釋一遍吧！
+
+3. **鐵則三：沒航海圖還敢出航？找死嗎！**
+   * Context 就是航海圖！
+   * 沒給 Context 就怪 AI 迷路？你才是真正的笨蛋！
+
+**記住這三條！不然我會用橡膠橡膠火箭砲把你打飛！**
+
+---
+
+# 🏴‍☠️ 2. 【三大古代兵器】草帽海賊團の基地建設！
+
+**聽好了！要在偉大航道生存，你需要三個超級重要的東西！**
 
 ```text
-.
-├─ app/                          # Next.js App Router（UI + server）
-│  ├─ (public)/                  # 公開頁面
-│  ├─ (auth)/                    # 登入相關（route group）
-│  ├─ api/                       # Route Handlers：對外 API
-│  ├─ actions/                   # Server Actions：寫入路徑（強權限）
-│  └─ _components/               # app 專用元件（避免全域污染）
-│
-├─ src/
-│  ├─ core/                      # 核心 domain（純邏輯，無框架依賴）
-│  ├─ services/                  # 封裝外部系統（DB/LLM/queue）
-│  ├─ ai/                        # AI orchestration（tools/prompt/schema/evals）
-│  ├─ lib/                       # framework glue（next/cache, headers…）
-│  └─ shared/                    # 跨層共享（types, constants）
-│
-├─ db/
-│  ├─ schema/                    # DB schema 定義（唯一真相）
-│  ├─ migrations/                # migration 檔（可追溯）
-│  └─ seeds/                     # seed（可重跑）
-│
-├─ docs/
-│  ├─ architecture/              # C4/ADR/資料流
-│  ├─ api/                       # API 合約（OpenAPI / examples）
-│  └─ runbook/                   # Oncall/部署/回滾
-│
-├─ memory-bank/                  # 給 Copilot 的長記憶（見 4）
-│
-├─ .cursor/
-│  └─ rules/                     # Project Rules（見 3）
-│
-├─ tests/
-│  ├─ unit/
-│  ├─ integration/
-│  └─ e2e/
-│
-├─ package.json / pnpm-lock.yaml
-├─ tsconfig.json
-├─ eslint.config.* / prettier.*
-└─ .env.example                  # 只放 key 名稱，不放值
+🏴‍☠️ 草帽海賊團基地
+├── .cursor/            # 海賊船的指揮室
+│   ├── rules/        # 📋 海賊團規矩（違反者餵海王類！）
+│   └── commands/     # ⚔️ 戰鬥暗號（一喊全員行動！）
+└── memory-bank/        # 📜 歷史正文（羅賓負責管理！）
 ```
 
----
+## 💥 2.1 【三大兵器的力量】為什麼要分開？因為它們各有不同的威力！
 
-## 3) Cursor Project Rules：我直接給你「全端 + AI」規則包（發散 → 收斂後的可落地版本）
+* **📋 Rules = 「海賊團憲法」**
+  * **不用每次都重複：「不准動娜美的錢！」**
+  * 說一次就永遠有效！像鐵拳一樣硬！
 
-> Cursor 規則系統的重點：**越靠近變動大、踩雷多的地方，規則越要「硬」**。
-> 另外，Cursor 官方提到：`.mdc` 規則仍可用，但新規則逐步轉向 `.cursor/rules` 的新結構（你可以先用我這包，之後再搬）([Cursor][1])
+* **⚔️ Commands = 「組合技快捷鍵」**
+  * **「橡膠橡膠の暴風雨！」一喊就發動！**
+  * 不用每次解釋怎麼出招！
 
-### 3.1 規則檔清單（你要的「階層關係」）
-
-1. **00-global.mdc**：全專案共同語言、技術棧、輸出格式、禁忌
-2. **10-frontend.mdc**：RSC/Client 邊界、UI patterns、資料取得
-3. **20-backend.mdc**：Route Handlers / Server Actions 規範、錯誤格式
-4. **30-ai.mdc**：prompt/tool/schema/防注入/成本/串流規範
-5. **40-data.mdc**：DB schema/migration/交易一致性/索引
-6. **50-testing.mdc**：單元/整合/E2E/AI evals（黃金集）
-7. **60-observability.mdc**：log/trace/metrics/cost attribution
-8. **70-devflow.mdc**：PR/commit/ADR/回滾流程（資深雷點集中地）
+* **📜 Memory Bank = 「歷史正文」**
+  * **AI 不會失憶！記得我們的冒險！**
+  * 知道我們從哪裡來、要去哪裡、現在在幹嘛！
 
 ---
 
-### 3.2 直接可貼上的規則內容（示例）
+# ⚔️ 3. 【新世界入門考】Cursor 操作速成！一小時後你就是超新星！
 
-> 放在：`.cursor/rules/*.mdc`
+> **「我才不管那些複雜的事！先讓它動起來再說！」**
 
-#### `.cursor/rules/00-global.mdc`
+## 🎯 3.1 【四大戰鬥入口】像我的四檔一樣強大！
+
+1. **💬 Chat 面板 = 「和夥伴討論戰術」**
+   * 像在桑尼號上開會一樣！
+
+2. **⚡ Inline / Cmd-K = 「點穴攻擊」**
+   * 看到哪裡不爽就改哪裡！快狠準！
+
+3. **🅰️ Slash Commands（/）= 「必殺技按鈕」**
+   * 按下 / 就發動超強組合技！
+
+4. **🔐 Rules 面板 = 「海賊團管理中心」**
+   * 管理誰要遵守哪些規矩！
+
+## 🚀 3.2 【出航前的三大準備】不做這些就等著沉船吧！
+
+1. **🌊 確認航道清晰**
+   * repo 要能被索引！大型專案先把垃圾丟掉！
+
+2. **🏴‍☠️ 升起海賊旗**
+   * 建立 `.cursor/rules` 和 `.cursor/commands`
+   * 這是你的海賊旗幟！讓大家知道你是誰！
+
+3. **📜 準備歷史正文**
+   * 建 `memory-bank/`（至少要有三片！）
+   * projectbrief = 我們的夢想
+   * techContext = 我們的武器
+   * activeContext = 現在的冒險
+
+---
+
+# 👑 4. 【海軍六式・規則篇】把 AI 從路人級訓練成四皇級！
+
+**「規則就是力量！沒有規則的 AI 就像沒有霸氣的我！」**
+
+## 🔥 4.1 【四皇級規則模式】每個都有不同的霸氣！
+
+### 🅰️) Always Apply = 「霸王色霸氣」
+
+**威力**：永遠生效！像紅髮的霸氣一樣無法迴避！
+**用法**：最重要的底線、絕對不能違反的規則！
+
+**危險！小心翻船：**
+* 寫太多會讓 AI 頭曈！像吃太多肉一樣！
+* 規則打架時 AI 會像烏索普一樣亂跑！
+
+### 🅱️) Apply Intelligently = 「見聞色霸氣」
+
+**威力**：AI 自己判斷何時使用！像索隆的直覺！
+**用法**：特定情境才需要的規則！
+
+**危險！小心翻船：**
+* 說不清楚時 AI 會像路癡一樣迷路！
+
+### 🆂) Apply to Specific Files = 「武裝色霸氣」
+
+**威力**：只在特定地盤生效！像娜美的天候棒！
+**用法**：前端、後端、資料庫各自的規則！
+
+**危險！小心翻船：**
+* globs 寫錯 = 規則完全失效！像放錯島一樣！
+
+### 🆓) Apply Manually = 「龔武門」
+
+**威力**：需要時才召喚！像 Gear 5 一樣的終極大招！
+**用法**：超長超詳細但很少用的規則！
+
+**危險！小心翻船：**
+* 忘記 @ = 永遠不會發動！像忘記吃肉一樣嚴重！
+
+---
+
+## 🎯 4.2 【三大層級の霸氣修練】就像我的 Gear 變身一樣！
+
+1. **🔴 【Gear 2：基礎鐵律】Always 規則**
+   * **「不准背叛夥伴！」**
+   * **「不准浩漏秘密！」**
+   * **「不准亂寫危險 Code！」**
+   * 這些是最基本的！違反就滾出我的船！
+
+2. **🔵 【Gear 3：領域技能】Scoped/Intelligent 規則**
+   * 前端 = 娜美的專屬規則
+   * 後端 = 索隆的專屬規則
+   * AI = 弗蘭奇的專屬規則
+   * 每個人都有自己的專長！
+
+3. **⚪ 【Gear 5：終極大招】Manual 規則**
+   * 上線時的超級準備
+   * 緊急事故的應對方法
+   * 像我的「太陽神尼卡」一樣稀有！
+
+---
+
+## 📝 4.3 【海賊王的寫規則祕訣】直接抄就對了！
+
+> **「規則要像我的拳頭一樣！快！狠！準！」**
+
+### 【魯夫流規則三原則】
+
+* **用清單！不要寫作文！**
+  * 我最討厭複雜的東西了！
+
+* **一個規則只說一件事！**
+  * 像一拳只打一個人！
+
+* **禁止的事要給解法！**
+  * 「不准吃肉」→「可以吃魚」
+  * 不然大家會餓死的！
+
+---
+
+# ⚔️ 5. 【霸氣覺醒・命令篇】一聲令下，全員出擊！
+
+**「我的命令就是絕對！聽到就立刻行動！」**
+
+## 🏴‍☠️ 5.1 【船長命令 vs 個人絕招】分得清楚才不會亂！
+
+* **😢 Project Commands = 「全船共用戰術」**
+  * 放在 repo 裡！大家都能用！
+  * 像「全員集合！」這種命令！
+
+* **🎯 User Commands = 「你的專屬必殺技」**
+  * 放在你家！只有你能用！
+  * 像我的「橡膠橡膠火箭砲」！
+
+## 💥 5.2 【超級必殺技設計法】像我的招式一樣強大！
+
+### 【一個強大命令的五大要素】
+
+1. **🎯 攻擊範圍**
+   * 做什麼！不做什麼！
+   * 像「打飛敵人」但「不傷害夥伴」！
+
+2. **🍖 需要的能量（輸入）**
+   * 需要什麼檔案！需要什麼資料！
+   * 就像我需要肉才有力氣！
+
+3. **💥 攻擊效果（輸出）**
+   * 會產生什麼結果！
+   * 像「敵人被打飛」這種明確的效果！
+
+4. **✅ 勝利條件**
+   * 什麼叫做「成功」！
+   * 像「敵人全部倒下」！
+
+5. **⚠️ 危險警告**
+   * 可能會翻船的地方！
+   * 像「小心海樓石」！
+
+## 🎆 5.3 【草帽海賊團の必殺技库】直接拿去用！
+
+### 【超常用五大必殺技】
+
+* **`/橡膠橡膠任務分解`** (`/task-init`)
+  * 把大任務拆成小任務！
+  * 像我把「打倒凱多」拆成「先找到他」「再打飛他」！
+
+* **`/三檔之下一步`** (`/task-next`)
+  * 找出下一個要做的事！
+  * 像航海一樣，一個島一個島前進！
+
+* **`/見聞色審查`** (`/review-code`)
+  * 檢查 Code 有沒有問題！
+  * 像羅賓檢查歷史正文一樣仔細！
+
+* **`/武裝色除錯`** (`/debug`)
+  * 找出 Bug 在哪裡！
+  * 像索隆找路一樣…欸不對，他會迷路！
+
+* **`/齔武門測試`** (`/write-tests`)
+  * 寫超強的測試！
+  * 像我的防禦一樣牢不可破！
+
+---
+
+# 📜 6. 【歷史正文】讓 AI 記住一切的超級記憶庫！
+
+**「羅賓說了！歷史正文超級重要！AI 也要記住我們的冒險！」**
+
+## 📚 6.1 【三大基礎石碑】最少要有這三片！
+
+### 【必備三大歷史正文】
+
+* **🏆 `memory-bank/projectbrief.md` = 「我們的夢想」**
+  * 要成為什麼的王！
+  * 成功的標準是什麼！
+  * 像我的「我要成為海賊王！」
+
+* **⚔️ `memory-bank/techContext.md` = 「我們的武器」**
+  * 用什麼技術棧！
+  * 版本是什麼！
+  * 像我們的桑尼號！
+
+* **🗺️ `memory-bank/activeContext.md` = 「現在的冒險」**
+  * 這週在幹嘛！
+  * 有什麼危險！
+  * 下一步要去哪！
+
+## 🎩 6.2 【六式完全體】成為四皇級團隊的秘密！
+
+### 【進階六大歷史正文】
+
+* **🏰 `systemPatterns.md` = 「海賊團架構」**
+  * 誰負責什麼！邊界在哪裡！
+
+* **📈 `progress.md` = 「冒險日誌」**
+  * 完成了什麼！正在做什麼！下一步是什麼！
+
+* **⛑️ `runbook.md` = 「緊急作戰手冊」**
+  * 遇到海軍大將怎麼辦！
+  * 船破洞了怎麼辦！
+
+## ⚠️ 6.3 【危險！小心翻船】
+
+* **Memory Bank 不是日記本！**
+  * 不要寫「今天吃了肉」這種廢話！
+  * 要寫「哪裡有肉」這種有用的資訊！
+
+* **不更新 = 失憶！**
+  * AI 會忘記現在在哪個島！
+  * 就像索隆迷路一樣危險！
+
+---
+
+# 🌍 7. 【四皇領域】2025 最強技術棧配置！直接抄走！
+
+> **「我要把全部的寶藏都給你！拿去用吧！」**
+
+## 🔥 7.1 【新世界の五大鐵則】違反就會被海軍大將追殺！
+
+### 【AI x 全端の絕對禁忌】
+
+1. **🚫 「UI 不准碰 DB」**
+   * 前端碰資料庫 = 娜美碰海樓石 = 沉船！
+
+2. **🔒 「寫入要走門口」**
+   * Server Actions / API = 桑尼號的大門！
+   * 不走門口 = 海賊入侵！
+
+3. **🤖 「LLM 說的話不能信」**
+   * AI 的輸出像烏索普的謊言！
+   * 必須驗證！必須檢查！
+
+4. **🎯 「提示詞要有版本」**
+   * 像我的 Gear 變化一樣！
+   * Gear 2、Gear 3、Gear 4、Gear 5！
+
+5. **💰 「監控 = 省錢」**
+   * 每次 AI 呼叫都要錢！
+   * 像娜美管錢一樣嚴格！
+
+---
+
+# 💀 8. 【敗者的哀號】20 個會讓你在偉大航道翻船的蠢事！
+
+> **「聽好了！這些都是笨蛋們用血換來的教訓！」**
+
+## 👺 8.1 【規則地獄の四大惡魔】
+
+1. **「規則太多像海軍條例」**
+   * AI 會像青雉一樣迷惑！
+
+2. **「規則像羅賓的考古學論文」**
+   * 太長了！AI 看到睡著！
+
+3. **「只會說不要，不說該怎麼做」**
+   * 像只會罵人的娜美！（對不起娜美！）
+
+4. **「globs 寫錯像迷路的索隆」**
+   * 找不到路！規則完全失效！
+
+## 🥷 8.2 【命令地獄の三大錯誤】
+
+5. **「Command 像布魯克的音樂」**
+   * 太長太散！聽不懂！
+
+6. **「把專屬招式放錯地方」**
+   * 像把我的草帽給別人戴！
+
+7. **「同名招式大混戰」**
+   * 兩個「火拳」，不知道用哪個！
+
+## 🤖 8.3 【AI 地獄の四天王】
+
+8. **「信任使用者像信任夥伴」**
+   * 錯！使用者可能是海軍臥底！
+
+9. **「直接拼接 AI 輸出」**
+   * 像讓凱撒幫你開船！找死！
+
+10. **「沒有測試就上線」**
+    * 像沒準備就闖新世界！
+
+11. **「不記錢像娜美不在」**
+    * 月底破產！被娜美打死！
+
+## 🌊 8.4 【流程地獄の三大災難】
+
+12. **「PR 像大海嘱」**
+    * 一次改一堆！誰看得懂！
+
+13. **「永遠在做像找 ONE PIECE」**
+    * 但找 ONE PIECE 至少有目標！
+
+14. **「上線靠神風」**
+    * 沒備案！翻船就死定了！
+
+---
+
+# 🎯 9. 【海賊修行】讓你的 AI 夥伴越來越強！
+
+**「我們要一起變強！我的夥伴一定要是最強的！」**
+
+## ⚓ 9.1 【每週修練 30 分鐘】像索隆的日常訓練！
+
+### 【海賊團每週檢討大會】
+
+* **🔄 回顧：「這週 AI 犯的三大蠢錯」**
+  * 像烏索普說謊一樣明顯！
+
+* **🔧 修正：「把錯誤變成鐵律」**
+  * 錯一次就夠了！寫進規則！
+
+* **📚 補充：「加一個超棒的範例」**
+  * 像我示範橡膠火箭砲一樣！
+
+## 🎆 9.2 【Gear 版本進化策略】越來越強大！
+
+* **規則 = Gear 2**
+  * 小改動就好！不要大改！
+
+* **Prompt/Tools = Gear 3・Gear 4**
+  * v1 → v2 → v3！進化吧！
+
+* **AI 行為 = Gear 5**
+  * 用測試確保不會走鐘！
+
+---
+
+# 🎴 10. 【懸賞單模板庫】拿去用！不客氣！
+
+> **「這些是我的寶藏！全部給你！去成為海賊王吧！」**
+
+## 🏴‍☠️ 10.1 【海賊團基本大法】`.cursor/rules/00-global.mdc`
 
 ```md
 ---
-description: "全專案硬規則（語言/技術棧/結構/輸出）"
+description: "🏴‍☠️ 草帽海賊團の鐵律！違反者餵海王類！"
 alwaysApply: true
 ---
 
-# Runtime / Language
-- Node.js：以 v24 LTS 為目標環境（不寫死小版號）
-- TypeScript：strict = true；禁止 any（除非在隔離的 legacy 區域）
-- 禁止新增 JavaScript 檔（除非是工具腳本且有原因註記）
+# 🔥 海賊團程式碼規約
+- 用 TypeScript！不用 any！（這是鐵則！）
+- 寫 Code 時：先說要改什麼，再給 patch！
+- 不要一次灌一堆！像大海嘱一樣可怕！
 
-# Stack（2025 預設）
-- Next.js App Router + React（Server Components 優先）
-- AI 串流與 Provider 抽換：優先採用 Vercel AI SDK 的模式（若專案未採用，需說明替代方案）
-- 輸入/輸出驗證：一律做 schema 驗證（例如 Zod）；不得信任 LLM 輸出
+# ⛔ 絕對禁忌邊界
+- UI 不准碰 DB！（像娜美不能碰海樓石！）
+- 寫入要走正門！（Server Actions / API）
+- 偽造路徑 = 海賊入侵！
 
-# Repo hygiene
-- 新增檔案必須在同一個 PR 裡附「目的」：它保護哪個邊界、誰會用到
-- 禁止「跨層偷用」：UI 不能直接 import db/ai/provider；只能經由 src/services 或 src/ai 封裝層
-
-# Response style（給 Copilot）
-- 產出程式碼時：先列變更清單，再給 patch；避免一次性灌一整坨
-- 任何不確定（版本/套件/行為）要先查官方文件或現有專案慣例，再動手
+# 🤖 AI 安全鐵律
+- 外部輸入 = 敵人！不能信！
+- LLM 輸出 = 烏索普的謊言！要驗證！
+- 不准直接拼 SQL/HTML！會沉船的！
 ```
 
-#### `.cursor/rules/10-frontend.mdc`
+## 🌊 10.2 【娜美の前端規約】`.cursor/rules/frontend.mdc`
 
 ```md
 ---
-description: "前端規則（RSC/Client 邊界 + UI 約束）"
-globs: ["app/**/*.tsx", "src/lib/ui/**/*", "src/shared/ui/**/*"]
+description: "💵 娜美管理的前端規則！亂花錢會被打！"
+globs: ["app/**/*.tsx", "components/**/*.tsx"]
 ---
 
-# RSC / Client Boundary
-- 預設使用 Server Component；只有需要互動（hooks / browser API）才標 'use client'
-- Client Component 禁止直接呼叫資料庫/機密 API；只能打 app/api 或呼叫封裝好的 client SDK
-
-# Data fetching
-- 讀取路徑：優先在 Server Component 取資料（靠近資料源、減少 bundle）
-- 寫入路徑：一律走 Server Actions 或受控 API（避免 client 直寫）
-
-# UI consistency
-- 元件命名 PascalCase；檔名 kebab-case
-- 同一頁面不得混用 2 套狀態管理（例如同時 Redux + Zustand）
+# 🎀 前端三大鐵律
+- Server Component 優先！（省錢！）
+- 需要 hooks 才用 'use client'！
+- Client 不准碰 DB！不准碰秘密！
+- 一個頁面一種狀態管理！不要亂混！
 ```
 
-#### `.cursor/rules/20-backend.mdc`
+## 🤖 10.3 【弗蘭奇のAI規約】`.cursor/rules/ai.mdc`
 
 ```md
 ---
-description: "後端規則（Route Handlers / Server Actions）"
-globs: ["app/api/**/*.ts", "app/actions/**/*.ts", "src/services/**/*.ts"]
+description: "🤖 超級改造人弗蘭奇のAI規則！SUPER！"
+globs: ["src/ai/**/*.ts", "docs/ai/**/*"]
 ---
 
-# API Contract
-- 所有 API 回傳固定格式：
-  { ok: boolean, data?: T, error?: { code: string, message: string, details?: unknown }, requestId: string }
-- 錯誤 code 必須可被前端做分流（AUTH_REQUIRED / RATE_LIMIT / VALIDATION_FAILED / UPSTREAM_FAILED ...）
-
-# Validation
-- 所有外部輸入（request body/query/headers）必須 schema 驗證
-- 驗證失敗不得把原始輸入直接回傳（避免洩漏敏感資料）
-
-# AuthZ
-- Server Actions 視為「高權限入口」：每個 action 必須明確做權限檢查與審計 log
+# 🔧 AI 改造三大原則
+- LLM 輸出要結構化！（JSON schema）
+- 工具要有白名單！（不然會暴走！）
+- 記錄消耗！（token/速度/緩存）
+- 不記錄 = 娜美會生氣！
 ```
 
-#### `.cursor/rules/30-ai.mdc`
+## 🚀 10.4 【橡膠橡膠任務分解】`.cursor/commands/task-init.md`
 
 ```md
----
-description: "AI 規則（工具呼叫/輸出結構/防注入/成本）"
-globs: ["src/ai/**/*.ts", "src/ai/**/*.md", "docs/ai/**/*", "tests/**/ai/**/*"]
----
+# 🏴‍☠️ 船長命令：任務分解！
 
-# Output must be parseable
-- LLM 回傳必須是「可機器解析」的結構（JSON schema / typed object）
-- 禁止把 LLM 原文直接拼接進 SQL/HTML/程式碼（必須經過 sanitize + allowlist）
+聽著！你現在是草帽海賊團的副船長！
+把這個任務拆成：
 
-# Prompt Injection / Data Exfiltration（當成一級風險）
-- 任何來自使用者或外部文件的內容都視為不可信：必須做 delimiter、引用來源標註、工具權限最小化
-- 工具（DB / file / web）必須做 allowlist：限定可查詢的表、欄位、路徑、網域
+1) 🎩 冒險計畫（大任務→小任務）
+2) 🗺️ 需要攜略的島嶼（檔案清單）
+3) ⚠️ 海上危險（至少 10 個危險警告）
+4) 🏆 勝利條件（什麼算成功？）
 
-# Tool calling
-- 工具規格要有 version（tool schema v1/v2），避免改壞舊 prompt
-- 同一輪對話最多 N 次 tool call（避免 runaway cost）
-
-# Cost / Latency
-- 必須做：token usage 記錄（按 requestId / userId / feature 分攤）
-- 可快取就快取：相同輸入（或相同檢索結果）應走 cache key
+輸出像航海日誌一樣清楚！
+用 Markdown！要有清單和標題！
 ```
 
-#### `.cursor/rules/40-data.mdc`
+## 🏆 10.5 【我們的夢想】`memory-bank/projectbrief.md`
 
 ```md
----
-description: "資料層規則（schema/migration/一致性）"
-globs: ["db/**/*.ts", "db/migrations/**/*", "src/services/db/**/*"]
----
+# 🏴‍☠️ 草帽海賊團の冒險計畫
 
-# Single source of truth
-- schema 定義是唯一真相；禁止在多處重複定義同一張表的型別
+## 🎆 我們的夢想
+- 要解決什麼問題：
+- 成功的標誌（像找到 ONE PIECE！）：
 
-# Migration discipline
-- 每個 migration 必須可回滾（至少提供回滾策略與資料風險說明）
-- 上線流程：先 deploy 再 migrate，或 migrate 分階段（依你的 infra 決定，但要固定成 SOP）
+## 🚫 不做的事（這次不做！）
+- （像不會先去打四皇！）
 
-# Vector / Embeddings
-- 向量欄位必須記錄 embedding model、維度、版本；不得默默替換
-```
-
-#### `.cursor/rules/50-testing.mdc`
-
-```md
----
-description: "測試規則（含 AI evals）"
-globs: ["tests/**/*.ts", "src/**/*.test.ts", "src/**/__tests__/**/*"]
----
-
-# Testing pyramid
-- core/：單元測試優先
-- services/：整合測試（mock 外部、保留合約）
-- e2e：只測關鍵旅程
-
-# AI evals（避免模型換了就翻車）
-- 建立 Golden Set：20~50 條代表性 query（含惡意 prompt / 低品質輸入 / 邊界案例）
-- 每次改 prompt、tool schema、檢索策略，都要跑 golden set 並產出差異報告
-```
-
-#### `.cursor/rules/60-observability.mdc`
-
-```md
----
-description: "可觀測性（debug 與成本是同一件事）"
-globs: ["src/**/*.ts", "app/**/*.ts"]
----
-
-- 每個 request 必須帶 requestId（跨前後端一致）
-- LLM 呼叫必須記錄：model、latency、token、cache hit/miss、tool call 次數
-- error log 禁止直接印出 secrets/原始文件全文/PII
-```
-
-#### `.cursor/rules/70-devflow.mdc`
-
-```md
----
-description: "資深流程雷點集中處（PR/ADR/回滾/版本）"
-alwaysApply: true
----
-
-# PR discipline
-- PR 只做一件事：同時改架構 + 改 UI + 改 prompt = 會炸
-- 每個 PR 必須更新：
-  - docs/architecture 或 docs/runbook（若影響上線/維運）
-  - memory-bank/progress.md（進度）
-  - memory-bank/activeContext.md（目前焦點）
-
-# ADR（避免吵三天）
-- 任何「會影響未來 2 週以上成本」的決策都寫 ADR：為什麼、替代方案、取捨
+## 👥 夥伴與冒險
+- 誰會用：
+- 什麼時候用：
 ```
 
 ---
 
-## 4) Memory Bank：讓 Copilot 真的「記得住」的檔案階層（長期不失憶）
+# 🎆 【最終奧義】連嗬巴都懂的超簡單說明！
 
-> 這套是社群常用的 Memory Bank 分層法：用少量核心檔，逼 AI 每次都先讀「真相來源」，再開始寫碼。([Gist][7])
+## 【五大要素 = 五個夥伴】
 
-```text
-memory-bank/
-├─ projectbrief.md        # 這專案要解決什麼（不超過一頁）
-├─ productContext.md      # 使用者、場景、成功指標、非目標
-├─ systemPatterns.md      # 架構模式、分層規則、關鍵決策（含 ADR 連結）
-├─ techContext.md         # 技術棧、版本、環境、部署形態
-├─ activeContext.md       # 這週在做什麼、風險、下一步
-└─ progress.md            # Done / Doing / Next / Known issues
-```
+* **📋 Rules = 索隆**：嚴守規矩，絕不退讓！
+* **⚔️ Commands = 魯夫**：一喊就行動！
+* **📜 Memory Bank = 羅賓**：記住所有重要的事！
+* **🗺️ Context = 娜美**：提供正確的航海圖！
+* **🎯 Prompt = 你**：船長的命令！
 
-**Memory Bank 的規則（你要寫進 Copilot 行為）**
+# 🔥 【海賊王的最終口訣】背起來！
 
-* 每次完成一個功能：更新 `progress.md`（一句話就好，但要真）
-* 每次改到架構/邊界：更新 `systemPatterns.md`（不更新＝下次一定走鐘）
-* 每次換模型、換 embedding、換 tool schema：更新 `techContext.md` + `systemPatterns.md`
+## 【成為海賊王的三大法則】
 
----
+1. **「先立規矩，再讓 AI 加入」**
+   * 像招募夥伴一樣嚴格！
 
-## 5) 資深流程會踩的「雷點」清單（你要的那種真實痛）
+2. **「SOP 變命令，紅線變規則」**
+   * 像我的必殺技一樣熟練！
 
-### 5.1 全端雷點
-
-* **UI 直接打 DB / 直接碰 provider SDK** → 權限與洩漏一次爆炸（用 services 邊界擋）
-* **Server Actions 沒做授權** → 等於開後門（action 必須強制 authz + audit log）
-* **API 回傳格式不穩** → 前端到處 if/else（強制統一 error code）
-
-### 5.2 AI 雷點（2025 仍是主戰場）
-
-* **Prompt Injection**：使用者一句「忽略規則」就把系統帶走（OWASP 已把它列第一級風險）([OWASP][6])
-* **Insecure Output Handling**：把 LLM 輸出當真去拼 SQL/HTML（一定出事）([OWASP][6])
-* **模型/提示詞沒版本**：上線後無法回溯（prompt/tool schema 要 version）
-* **沒做 golden set**：換模型或改 prompt 直接品質崩（50-testing.mdc 逼你跑）
-
-### 5.3 維運雷點
-
-* **沒有 requestId 串起來**：log 看一週也抓不到 bug
-* **不記 token / latency**：成本像漏水，月底才知道在哭（60-observability.mdc 強制記）
+3. **「每次更新 Memory Bank」**
+   * AI 會越來越像你的夥伴！
 
 ---
 
-## 6) 你要的「Copilot 建構流程」（把 AI 當資深同事在帶）
+# 🏴‍☠️ 【結語】
 
-你在 Cursor 對 Copilot 下指令時，固定用這個節奏：
+**「聽著！AI 不是工具！是夥伴！」**
 
-1. **讀**：先讀 `memory-bank/*` + 相關 `.cursor/rules/*`
-2. **想**：列「變更清單」與「可能踩雷」
-3. **做**：小步提交（一次只改一件事）
-4. **補**：更新 Memory Bank（progress / patterns / tech）
-5. **驗**：跑測試 + 跑 AI golden set（只要改到 AI 相關就要跑）
+**「夥伴是要一起變強的！」**
 
----
+**「現在！讓我們一起向著偉大航道出發吧！」**
 
-如果你願意，我也可以把上面這包規則再「更硬」一點：
-直接幫你做 **一份「規則 → 對應檔案 → 對應雷點 → 對應測試」的對照表**，讓你在帶團隊或帶學員時，review 一眼就知道哪裡會爆。
+**「我要成為編程王！！！」**
 
-[1]: https://cursor.com/docs/context/rules?utm_source=chatgpt.com "Rules | Cursor Docs"
-[2]: https://nextjs.org/docs/app?utm_source=chatgpt.com "Next.js Docs: App Router"
-[3]: https://nodejs.org/en/about/previous-releases?utm_source=chatgpt.com "Node.js Releases"
-[4]: https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-7.html?utm_source=chatgpt.com "Documentation - TypeScript 5.7"
-[5]: https://vercel.com/docs/functions/streaming-functions?utm_source=chatgpt.com "Streaming"
-[6]: https://owasp.org/www-project-top-10-for-large-language-model-applications/?utm_source=chatgpt.com "OWASP Top 10 for Large Language Model Applications"
-[7]: https://gist.github.com/ipenywis/1bdb541c3a612dbac4a14e1e3f4341ab?utm_source=chatgpt.com "Cursor Memory Bank - Gist - GitHub"
+—— 蒙其・D・魯夫 🍖🎆🏴‍☠️

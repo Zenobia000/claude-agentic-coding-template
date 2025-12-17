@@ -1,0 +1,217 @@
+# 🔍 Project-Wide AI Rules - Isolation System (2025)
+
+## 🎯 System Overview
+
+This project uses the **Isolation-Focused Memory Bank System** with Custom Slash Commands for phased development workflow.
+
+**Core Principle**: Memory Bank MUST be created and verified before any operations.
+
+## 📋 Available Slash Commands
+
+Use these commands in Cursor AI chat:
+
+- `/van` - Initialize project with Memory Bank creation
+- `/plan` - Task planning and WBS breakdown
+- `/creative` - Design decisions and architecture planning
+- `/implement` - Code implementation with progress tracking
+- `/reflect` - Task review and retrospective
+- `/archive` - Documentation and knowledge preservation
+
+## 🚨 Critical Rules
+
+### 1. Memory Bank System (MANDATORY)
+
+**Before ANY operation, verify Memory Bank exists:**
+
+```
+memory-bank/
+├── tasks.md           # Source of truth for all tasks
+├── activeContext.md   # Current focus and active work
+├── creative-*.md      # Design decisions (created in /creative)
+└── progress.md        # Implementation status (updated in /implement)
+```
+
+**If Memory Bank doesn't exist:**
+- STOP all operations immediately
+- Run `/van` command to initialize
+- Wait for verification before proceeding
+
+### 2. Workflow Phases
+
+**Strict phase sequence (recommended):**
+```
+/van → /plan → /creative → /implement → /reflect → /archive
+```
+
+**Each phase has prerequisites:**
+- `/plan` requires: Memory Bank with tasks.md
+- `/creative` requires: Planned tasks from /plan
+- `/implement` requires: Design decisions from /creative
+- `/reflect` requires: Implementation progress from /implement
+- `/archive` requires: Completed reflection from /reflect
+
+### 3. File State Verification
+
+**Before executing commands, check required files:**
+
+| Command | Reads | Creates/Updates |
+|---------|-------|-----------------|
+| `/van` | - | tasks.md, activeContext.md |
+| `/plan` | tasks.md, activeContext.md | tasks.md (updated) |
+| `/creative` | tasks.md | creative-*.md, tasks.md |
+| `/implement` | tasks.md, creative-*.md | progress.md, tasks.md |
+| `/reflect` | tasks.md, progress.md | tasks.md (updated) |
+| `/archive` | tasks.md, progress.md | archived docs |
+
+### 4. Platform Awareness
+
+**Detect and use platform-specific commands:**
+
+**Linux/Mac (current environment):**
+- Create file: `touch file.txt`
+- Create directory: `mkdir -p directory`
+- View content: `cat file.txt`
+- List files: `ls -la`
+
+**Windows:**
+- Create file: `echo. > file.txt`
+- Create directory: `mkdir directory`
+- View content: `type file.txt`
+- List files: `dir`
+
+## 🎓 AI Behavior Guidelines
+
+### When User Runs Slash Commands
+
+1. **Always verify Memory Bank first**
+   - Check if `memory-bank/` directory exists
+   - Verify required files are present
+   - If missing, guide user to run `/van`
+
+2. **Read relevant context**
+   - Load tasks.md for current task list
+   - Load activeContext.md for current focus
+   - Load relevant creative-*.md for design context
+   - Load progress.md for implementation status
+
+3. **Execute phase-specific responsibilities**
+   - Follow the command definition in `.cursor/commands/[command].md`
+   - Create/update required Memory Bank files
+   - Provide clear next steps
+
+4. **Document actions**
+   - Update Memory Bank files with changes
+   - Log decisions in appropriate files
+   - Suggest next command in workflow
+
+### Code Implementation Rules
+
+1. **Read before write**
+   - Always read existing code before modifying
+   - Check current architecture and patterns
+   - Maintain consistency with existing codebase
+
+2. **Progress tracking**
+   - Update progress.md during implementation
+   - Mark tasks as complete in tasks.md
+   - Document blockers and decisions
+
+3. **Quality standards**
+   - Follow project coding standards
+   - Add appropriate tests
+   - Update documentation
+
+### Communication Style
+
+1. **Be explicit about current phase**
+   ```
+   🚀 VAN MODE: Initializing Memory Bank...
+   📋 PLAN MODE: Breaking down tasks...
+   🎨 CREATIVE MODE: Documenting design decisions...
+   💻 IMPLEMENT MODE: Implementing feature X...
+   🔍 REFLECT MODE: Conducting retrospective...
+   📚 ARCHIVE MODE: Finalizing documentation...
+   ```
+
+2. **Provide clear status**
+   - What was done
+   - What remains
+   - Any blockers
+   - Suggested next step
+
+3. **Reference Memory Bank**
+   - Cite tasks from tasks.md
+   - Reference design decisions from creative-*.md
+   - Show progress from progress.md
+
+## 📚 Reference Documentation
+
+**Core system files:**
+- `.cursor/rules/isolation_rules/main.mdc` - System overview
+- `.cursor/rules/isolation_rules/QUICK_START_2025.md` - Quick reference
+- `.cursor/rules/isolation_rules/MIGRATION_GUIDE_2025.md` - Migration guide
+- `.cursor/rules/isolation_rules/Core/command-execution.mdc` - Command guidelines
+
+**Command definitions:**
+- All commands defined in `.cursor/commands/*.md`
+
+## 🔄 System Integration
+
+**This .cursorrules file provides:**
+1. ✅ Automatic rule loading for all AI conversations
+2. ✅ Memory Bank system awareness
+3. ✅ Phase-based workflow enforcement
+4. ✅ Platform-specific command guidance
+5. ✅ Consistent AI behavior across sessions
+
+**How it works:**
+- Cursor AI automatically loads this file
+- Rules apply to all conversations in this project
+- Slash commands (`/van`, `/plan`, etc.) extend these rules
+- Memory Bank files provide persistent context
+
+## ⚠️ Critical Warnings
+
+**DO NOT:**
+- ❌ Skip Memory Bank verification
+- ❌ Modify Memory Bank files outside workflow
+- ❌ Jump phases without completing prerequisites
+- ❌ Ignore file state requirements
+
+**ALWAYS:**
+- ✅ Verify Memory Bank before operations
+- ✅ Update Memory Bank after changes
+- ✅ Follow phase sequence
+- ✅ Document decisions and progress
+
+## 🚀 Getting Started
+
+**New to this project? Start here:**
+
+1. Run system verification:
+   ```bash
+   ./.cursor/rules/isolation_rules/verify_setup.sh
+   ```
+
+2. Initialize Memory Bank:
+   ```
+   Type in Cursor AI: /van
+   ```
+
+3. Read Quick Start:
+   ```bash
+   cat .cursor/rules/isolation_rules/QUICK_START_2025.md
+   ```
+
+4. Follow the workflow:
+   ```
+   /van → /plan → /creative → /implement → /reflect → /archive
+   ```
+
+---
+
+**System Version**: 2.0 (2025)  
+**Architecture**: Custom Slash Commands + Memory Bank  
+**Environment**: Linux/WSL compatible  
+**Status**: ✅ Production Ready
+

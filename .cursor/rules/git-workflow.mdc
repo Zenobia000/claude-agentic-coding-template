@@ -1,0 +1,371 @@
+---
+description: "🗡️ 三刀流 Git 工作流程！像索隆一樣精準的版本控制！"
+alwaysApply: false
+applyIntelligently: true
+---
+
+# 🌊 Git 分支策略
+
+## 主要分支
+```
+main (master)     ← 生產環境 (protected)
+  ↑
+develop          ← 開發整合 (protected)
+  ↑
+feature/*        ← 功能開發
+hotfix/*         ← 緊急修復
+release/*        ← 版本發布
+```
+
+## 分支命名規範
+```bash
+feature/ticket-number-short-description
+# feature/JIRA-123-user-authentication
+
+hotfix/issue-description
+# hotfix/critical-login-bug
+
+release/version-number
+# release/v1.2.0
+
+bugfix/ticket-number-description
+# bugfix/JIRA-456-fix-payment-error
+```
+
+# 📝 Commit 規範
+
+## Conventional Commits 格式
+```
+<type>(<scope>): <subject>
+
+<body>
+
+<footer>
+```
+
+## Type 類別
+```bash
+feat:     新功能
+fix:      修復 bug
+docs:     文檔更新
+style:    程式碼風格（不影響功能）
+refactor: 重構（不新增功能或修復 bug）
+perf:     效能優化
+test:     測試相關
+build:    建構系統或依賴變更
+ci:       CI/CD 相關
+chore:    其他雜項
+revert:   還原 commit
+```
+
+## Commit 範例
+```bash
+# ✅ Good commits
+feat(auth): add OAuth2 login support
+
+Implement Google and GitHub OAuth2 providers
+- Add OAuth configuration
+- Create callback handlers
+- Update user model for social login
+
+Closes #123
+
+fix(api): prevent SQL injection in user search
+
+Sanitize user input before database query
+Security issue reported by pentesting team
+
+# ❌ Bad commits
+"fix bug"
+"update"
+"WIP"
+"asdfasdf"
+```
+
+## Commit 規則
+- **原子性**: 一個 commit 只做一件事
+- **完整性**: 每個 commit 都要能建構
+- **描述性**: 說明 what 和 why，不只是 how
+- **可追溯**: 連結相關 issue/ticket
+
+# 🔄 Pull Request 流程
+
+## PR 標題格式
+```
+[Type] Brief description (#ticket-number)
+
+Examples:
+[Feature] Add user authentication system (#123)
+[Bugfix] Fix memory leak in data processing (#456)
+[Hotfix] Resolve critical payment failure (#789)
+```
+
+## PR 描述模板
+```markdown
+## 📋 Description
+Brief description of changes
+
+## 🎯 Type of Change
+- [ ] 🐛 Bug fix (non-breaking change)
+- [ ] ✨ New feature (non-breaking change)
+- [ ] 💥 Breaking change
+- [ ] 📝 Documentation update
+- [ ] ♻️ Refactoring
+- [ ] ⚡ Performance improvement
+
+## 🧪 Testing
+- [ ] Unit tests pass
+- [ ] Integration tests pass
+- [ ] Manual testing completed
+
+## 📸 Screenshots (if applicable)
+Before | After
+--- | ---
+[image] | [image]
+
+## ✅ Checklist
+- [ ] Code follows style guidelines
+- [ ] Self-review completed
+- [ ] Comments added for complex code
+- [ ] Documentation updated
+- [ ] No new warnings
+- [ ] Tests added/updated
+- [ ] All tests passing
+
+## 🔗 Related Issues
+Closes #(issue)
+```
+
+## Code Review 檢查項目
+```yaml
+Functionality:
+  - 功能是否正確實作
+  - 邊界條件處理
+  - 錯誤處理完整性
+
+Code Quality:
+  - 符合 SOLID 原則
+  - 無重複程式碼
+  - 可讀性良好
+  - 適當的註解
+
+Security:
+  - 無安全漏洞
+  - 輸入驗證
+  - 敏感資訊處理
+
+Performance:
+  - 無明顯效能問題
+  - 資源使用合理
+  - 查詢優化
+
+Testing:
+  - 測試覆蓋充足
+  - 測試案例合理
+  - Edge cases 覆蓋
+```
+
+# 🚀 Git 工作流程
+
+## Feature 開發流程
+```bash
+# 1. 從 develop 創建 feature 分支
+git checkout develop
+git pull origin develop
+git checkout -b feature/JIRA-123-new-feature
+
+# 2. 開發並提交
+git add .
+git commit -m "feat: implement new feature"
+
+# 3. 推送並創建 PR
+git push -u origin feature/JIRA-123-new-feature
+# Create PR: feature → develop
+
+# 4. Code review 後合併
+# Squash and merge via GitHub/GitLab
+```
+
+## Hotfix 流程
+```bash
+# 1. 從 main 創建 hotfix 分支
+git checkout main
+git pull origin main
+git checkout -b hotfix/critical-bug
+
+# 2. 修復並測試
+git add .
+git commit -m "fix: resolve critical bug in production"
+
+# 3. 合併到 main 和 develop
+git checkout main
+git merge --no-ff hotfix/critical-bug
+git tag -a v1.2.1 -m "Hotfix version 1.2.1"
+
+git checkout develop
+git merge --no-ff hotfix/critical-bug
+
+# 4. 刪除 hotfix 分支
+git branch -d hotfix/critical-bug
+```
+
+## Release 流程
+```bash
+# 1. 從 develop 創建 release 分支
+git checkout -b release/v1.2.0 develop
+
+# 2. 版本號更新、最終測試
+npm version minor  # or major/patch
+git commit -m "chore: bump version to 1.2.0"
+
+# 3. 合併到 main
+git checkout main
+git merge --no-ff release/v1.2.0
+git tag -a v1.2.0 -m "Release version 1.2.0"
+
+# 4. 合併回 develop
+git checkout develop
+git merge --no-ff release/v1.2.0
+
+# 5. 刪除 release 分支
+git branch -d release/v1.2.0
+```
+
+# 🏷️ Git Tags
+
+## 版本標記規範
+```bash
+# Semantic Versioning
+v<major>.<minor>.<patch>[-<pre-release>][+<build>]
+
+# Examples:
+v1.0.0          # 正式版
+v1.0.0-alpha    # Alpha 版
+v1.0.0-beta.1   # Beta 版
+v1.0.0-rc.1     # Release Candidate
+
+# 創建標記
+git tag -a v1.0.0 -m "Release version 1.0.0"
+git push origin v1.0.0
+
+# 列出標記
+git tag -l "v1.*"
+```
+
+# 🔧 Git 設定
+
+## 必要的 Git 設定
+```bash
+# 使用者資訊
+git config user.name "Your Name"
+git config user.email "your.email@example.com"
+
+# 預設編輯器
+git config core.editor "code --wait"
+
+# 自動修正換行符號
+git config core.autocrlf input  # Mac/Linux
+git config core.autocrlf true   # Windows
+
+# 設定 pull 策略
+git config pull.rebase true
+
+# 顯示中文檔名
+git config core.quotepath false
+```
+
+## Git Aliases
+```bash
+# 常用 aliases
+git config --global alias.co checkout
+git config --global alias.br branch
+git config --global alias.ci commit
+git config --global alias.st status
+git config --global alias.unstage 'reset HEAD --'
+git config --global alias.last 'log -1 HEAD'
+git config --global alias.visual '!gitk'
+git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+```
+
+## Git Hooks
+```bash
+# .git/hooks/pre-commit
+#!/bin/sh
+# Run tests before commit
+npm test
+npm run lint
+
+# .git/hooks/commit-msg
+#!/bin/sh
+# Validate commit message format
+commit_regex='^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\(.+\))?: .{1,50}'
+if ! grep -qE "$commit_regex" "$1"; then
+    echo "Invalid commit message format!"
+    exit 1
+fi
+```
+
+# ⚠️ Git 最佳實踐
+
+## DO's ✅
+- 經常 commit，保持 commit 小而專注
+- 在推送前先 pull 和 rebase
+- 使用 .gitignore 排除不必要檔案
+- 定期清理本地和遠端的廢棄分支
+- 使用 GPG 簽署重要 commits
+
+## DON'Ts ❌
+- 不要 commit 敏感資訊（密鑰、密碼）
+- 不要直接在 main/develop 分支上開發
+- 不要使用 `git push --force` 在公共分支
+- 不要 commit 大型二進制檔案
+- 不要修改已推送的 commit 歷史
+
+# 🆘 緊急情況處理
+
+## 撤銷操作
+```bash
+# 撤銷最後一次 commit（保留更改）
+git reset --soft HEAD~1
+
+# 撤銷最後一次 commit（刪除更改）
+git reset --hard HEAD~1
+
+# 撤銷已推送的 commit
+git revert <commit-hash>
+
+# 從 staging 移除檔案
+git reset HEAD <file>
+
+# 丟棄工作區更改
+git checkout -- <file>
+```
+
+## 找回遺失的 commit
+```bash
+# 查看 reflog
+git reflog
+
+# 恢復到特定狀態
+git reset --hard HEAD@{2}
+
+# 找回刪除的分支
+git checkout -b <branch-name> <commit-hash>
+```
+
+## 解決衝突
+```bash
+# 合併衝突
+git merge <branch>
+# 手動解決衝突
+git add <resolved-files>
+git commit
+
+# Rebase 衝突
+git rebase <branch>
+# 解決衝突後
+git add <resolved-files>
+git rebase --continue
+# 或放棄 rebase
+git rebase --abort
+```

@@ -1,0 +1,167 @@
+---
+description: "🌊 娜美管理的前端規則！亂花錢會被打！"
+globs:
+  - "app/**/*.tsx"
+  - "app/**/*.ts"
+  - "components/**/*.tsx"
+  - "components/**/*.ts"
+  - "src/**/*.jsx"
+  - "src/**/*.js"
+  - "pages/**/*.tsx"
+  - "pages/**/*.ts"
+---
+
+# 🎨 前端框架選擇
+
+## React/Next.js 優先
+- **Server Components 優先**：減少 bundle size
+- **Client Components 謹慎使用**：
+  - 需要 useState/useEffect
+  - 需要瀏覽器 API
+  - 需要事件處理
+  - 需要即時互動
+
+## 狀態管理
+- **Local State**: useState for component state
+- **Global State**: Zustand/Jotai (輕量級優先)
+- **Server State**: TanStack Query/SWR
+- **Form State**: React Hook Form + Zod
+
+# 🎯 組件設計原則
+
+## 組件結構
+```typescript
+// ✅ Good: 單一職責
+function UserCard({ user }: { user: User }) {
+  return <div>{user.name}</div>
+}
+
+// ❌ Bad: 職責過多
+function UserCardWithDataFetching() {
+  // fetching + display logic mixed
+}
+```
+
+## Props 設計
+- **必要 props 最小化**
+- **使用 TypeScript 定義介面**
+- **提供合理預設值**
+- **避免 prop drilling (使用 Context/組合)**
+
+## 檔案組織
+```
+components/
+  common/          # 共用元件
+    Button/
+      Button.tsx
+      Button.test.tsx
+      Button.stories.tsx
+      index.ts
+  features/        # 業務元件
+    auth/
+    dashboard/
+  layouts/         # 版面配置
+```
+
+# 💅 樣式管理
+
+## CSS 方案優先級
+1. **CSS Modules + PostCSS**：隔離性好
+2. **Tailwind CSS**：快速開發
+3. **CSS-in-JS (styled-components/emotion)**：動態樣式
+
+## 樣式規則
+- **Mobile First**：從小螢幕開始設計
+- **使用 CSS 變數**：主題色彩、間距
+- **避免 !important**：檢查 CSS 優先級
+- **使用語意化 class 名稱**
+
+# ⚡ 效能優化
+
+## 圖片處理
+```typescript
+// Next.js Image 組件
+import Image from 'next/image'
+
+// ✅ 自動優化
+<Image
+  src="/hero.jpg"
+  alt="Hero"
+  width={1200}
+  height={600}
+  priority // LCP 圖片
+/>
+```
+
+## Code Splitting
+- **動態導入**：大型組件延遲載入
+- **路由分割**：每個路由獨立 bundle
+- **第三方庫分割**：vendor chunk
+
+## 渲染優化
+- **使用 React.memo**：避免不必要重渲染
+- **useMemo/useCallback**：優化昂貴計算
+- **虛擬列表**：大量數據使用 react-window
+- **Suspense + Lazy**：漸進式載入
+
+# 🔍 SEO & Accessibility
+
+## SEO 必要項目
+- **Meta tags**：title, description, og tags
+- **Semantic HTML**：正確使用標籤
+- **結構化數據**：JSON-LD
+- **Sitemap**：自動生成
+
+## 無障礙要求
+- **ARIA labels**：互動元素必須有
+- **鍵盤導航**：所有功能可用鍵盤操作
+- **顏色對比**：WCAG AA 標準
+- **圖片 alt text**：描述性文字
+
+# 📱 響應式設計
+
+## 斷點定義
+```css
+/* Mobile First */
+@media (min-width: 640px) { /* sm */ }
+@media (min-width: 768px) { /* md */ }
+@media (min-width: 1024px) { /* lg */ }
+@media (min-width: 1280px) { /* xl */ }
+@media (min-width: 1536px) { /* 2xl */ }
+```
+
+## 設計原則
+- **流式佈局**：使用 % 和 rem
+- **彈性圖片**：max-width: 100%
+- **觸控友善**：按鈕最小 44x44px
+- **適應性內容**：根據裝置調整
+
+# 🛠️ 開發工具
+
+## 必要工具鏈
+- **Bundler**: Vite/Next.js/Webpack
+- **Linter**: ESLint + Prettier
+- **Type Check**: TypeScript strict
+- **Git Hooks**: Husky + lint-staged
+
+## 測試策略
+- **單元測試**: React Testing Library
+- **整合測試**: Cypress/Playwright
+- **視覺測試**: Storybook + Chromatic
+- **效能測試**: Lighthouse CI
+
+# 🚫 前端禁忌
+
+## 絕對不可以
+- ❌ 在前端儲存敏感資訊
+- ❌ 信任前端驗證（後端必須再驗證）
+- ❌ 直接操作 DOM (使用 React 方式)
+- ❌ 內聯大量 JavaScript
+- ❌ 忽略錯誤邊界處理
+
+## 避免的模式
+- 🚫 過度使用 useEffect
+- 🚫 在渲染中直接修改 state
+- 🚫 不當使用 index 作為 key
+- 🚫 組件層級過深
+- 🚫 過早優化

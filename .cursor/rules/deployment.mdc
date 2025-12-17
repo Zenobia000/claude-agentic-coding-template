@@ -1,0 +1,478 @@
+---
+description: "🚢 弗蘭奇的超級部署系統！SUPER 可靠的上線流程！"
+applyIntelligently: true
+globs:
+  - "deploy/**/*"
+  - ".github/workflows/*"
+  - "Dockerfile"
+  - "docker-compose*.yml"
+  - "k8s/**/*"
+  - ".env*"
+---
+
+# 🚀 部署策略
+
+## 環境分層
+```yaml
+Development:
+  - 本地開發環境
+  - 熱重載啟用
+  - Debug 模式開啟
+  - Mock 資料可用
+
+Staging:
+  - 類生產環境
+  - 真實資料庫（測試資料）
+  - 完整監控
+  - 自動部署
+
+Production:
+  - 生產環境
+  - 高可用架構
+  - 完整備援
+  - 手動批准部署
+```
+
+# 🐳 容器化配置
+
+## Dockerfile 最佳實踐
+```dockerfile
+# Multi-stage build
+FROM node:20-alpine AS builder
+WORKDIR /app
+# 只複製 package files 優化快取
+COPY package*.json ./
+RUN npm ci --only=production
+
+# 建構階段
+COPY . .
+RUN npm run build
+
+# 執行階段 - 最小化映像
+FROM node:20-alpine AS runner
+WORKDIR /app
+
+# 安全性：非 root 使用者
+RUN addgroup -g 1001 -S nodejs
+RUN adduser -S nextjs -u 1001
+
+# 只複製必要檔案
+COPY --from=builder --chown=nextjs:nodejs /app/build ./build
+COPY --from=builder --chown=nextjs:nodejs /app/node_modules ./node_modules
+
+USER nextjs
+EXPOSE 3000
+
+# 健康檢查
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD node healthcheck.js
+
+CMD ["node", "build/index.js"]
+```
+
+## Docker Compose 配置
+```yaml
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - NODE_ENV=production
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    networks:
+      - app-network
+    restart: unless-stopped
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          cpus: '1'
+          memory: 512M
+        reservations:
+          cpus: '0.5'
+          memory: 256M
+
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    command: redis-server --appendonly yes
+    volumes:
+      - redis-data:/data
+
+volumes:
+  postgres-data:
+  redis-data:
+
+networks:
+  app-network:
+    driver: bridge
+```
+
+# ☸️ Kubernetes 部署
+
+## Deployment 配置
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deployment
+  labels:
+    app: web-app
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: web-app
+  template:
+    metadata:
+      labels:
+        app: web-app
+    spec:
+      containers:
+      - name: app
+        image: registry.example.com/app:latest
+        ports:
+        - containerPort: 3000
+        env:
+        - name: NODE_ENV
+          value: "production"
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+```
+
+# 🔄 CI/CD Pipeline
+
+## GitHub Actions
+```yaml
+name: Deploy to Production
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: |
+          npm run test:unit
+          npm run test:integration
+
+      - name: Check code quality
+        run: |
+          npm run lint
+          npm run type-check
+
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Log in to Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          tags: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: ${{ steps.deploy.outputs.url }}
+    steps:
+      - name: Deploy to Kubernetes
+        run: |
+          kubectl set image deployment/app-deployment \
+            app=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+
+      - name: Wait for rollout
+        run: |
+          kubectl rollout status deployment/app-deployment
+
+      - name: Run smoke tests
+        run: |
+          curl -f https://api.example.com/health || exit 1
+```
+
+# 🎯 部署策略
+
+## Blue-Green Deployment
+```bash
+#!/bin/bash
+# blue-green-deploy.sh
+
+# 部署到 Green 環境
+kubectl apply -f k8s/green-deployment.yaml
+
+# 等待 Green 環境就緒
+kubectl wait --for=condition=available --timeout=300s \
+  deployment/green-deployment
+
+# 執行健康檢查
+./scripts/health-check.sh green || exit 1
+
+# 切換流量到 Green
+kubectl patch service app-service \
+  -p '{"spec":{"selector":{"version":"green"}}}'
+
+# 驗證切換成功
+sleep 10
+./scripts/verify-deployment.sh
+
+# 保留 Blue 環境 1 小時後清理
+echo "Scheduling Blue environment cleanup in 1 hour"
+at now + 1 hour <<< "kubectl delete deployment blue-deployment"
+```
+
+## Canary Deployment
+```yaml
+# 10% 流量到新版本
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: canary-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/canary: "true"
+    nginx.ingress.kubernetes.io/canary-weight: "10"
+spec:
+  rules:
+  - host: api.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: app-service-canary
+            port:
+              number: 80
+```
+
+# 🔐 部署安全
+
+## 密鑰管理
+```bash
+# 使用 Kubernetes Secrets
+kubectl create secret generic app-secrets \
+  --from-literal=db-password=$DB_PASSWORD \
+  --from-literal=api-key=$API_KEY
+
+# 在 Pod 中使用
+env:
+  - name: DATABASE_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: app-secrets
+        key: db-password
+
+# 使用 Sealed Secrets
+kubeseal --format=yaml < secret.yaml > sealed-secret.yaml
+```
+
+## 環境變數管理
+```bash
+# .env.example (提交到版本控制)
+NODE_ENV=production
+PORT=3000
+DATABASE_URL=postgresql://user:pass@host:5432/db
+REDIS_URL=redis://localhost:6379
+
+# .env.production (不提交)
+NODE_ENV=production
+PORT=3000
+DATABASE_URL=postgresql://prod_user:${SECRET_PASSWORD}@prod.db:5432/prod_db
+API_KEY=${SECRET_API_KEY}
+JWT_SECRET=${SECRET_JWT}
+```
+
+# 📊 部署監控
+
+## 健康檢查端點
+```typescript
+// /health - Liveness probe
+app.get('/health', (req, res) => {
+  res.status(200).json({
+    status: 'healthy',
+    timestamp: new Date().toISOString()
+  })
+})
+
+// /ready - Readiness probe
+app.get('/ready', async (req, res) => {
+  try {
+    // 檢查依賴服務
+    await db.query('SELECT 1')
+    await redis.ping()
+
+    res.status(200).json({
+      status: 'ready',
+      services: {
+        database: 'connected',
+        cache: 'connected'
+      }
+    })
+  } catch (error) {
+    res.status(503).json({
+      status: 'not ready',
+      error: error.message
+    })
+  }
+})
+```
+
+## 監控指標
+```yaml
+Metrics to Monitor:
+  - Deployment frequency
+  - Lead time for changes
+  - Mean time to recovery (MTTR)
+  - Change failure rate
+  - Application performance (APM)
+  - Error rates
+  - Resource utilization
+  - User experience metrics
+```
+
+# 🔄 回滾策略
+
+## 快速回滾
+```bash
+# Kubernetes 回滾
+kubectl rollout undo deployment/app-deployment
+
+# Docker Compose 回滾
+docker-compose down
+docker-compose up -d --scale app=0
+docker tag app:previous app:current
+docker-compose up -d
+
+# Git 回滾
+git revert HEAD
+git push origin main
+
+# Feature Flag 回滾
+curl -X POST https://api.example.com/flags \
+  -d '{"feature": "new-feature", "enabled": false}'
+```
+
+# 📋 部署檢查清單
+
+## Pre-Deployment
+- [ ] 所有測試通過
+- [ ] Code review 完成
+- [ ] 安全掃描通過
+- [ ] 資料庫遷移準備就緒
+- [ ] 回滾計劃確認
+- [ ] 監控警報設定
+
+## During Deployment
+- [ ] 備份當前版本
+- [ ] 執行資料庫遷移
+- [ ] 部署新版本
+- [ ] 健康檢查通過
+- [ ] 煙霧測試通過
+- [ ] 監控指標正常
+
+## Post-Deployment
+- [ ] 用戶驗收測試
+- [ ] 效能指標確認
+- [ ] 錯誤率監控
+- [ ] 文檔更新
+- [ ] 團隊通知
+- [ ] 事後檢討安排
+
+# 🚫 部署禁忌
+
+## 絕對不可以
+- ❌ 週五下午部署
+- ❌ 沒有回滾計劃就部署
+- ❌ 跳過測試直接部署
+- ❌ 在生產環境直接修改
+- ❌ 使用 latest tag 部署
+- ❌ 忽略健康檢查失敗
+
+## 必須要做
+- ✅ 使用不可變基礎設施
+- ✅ 實施零停機部署
+- ✅ 自動化所有步驟
+- ✅ 記錄所有變更
+- ✅ 測試回滾流程
+- ✅ 監控關鍵指標
