@@ -1,8 +1,0 @@
-ollama_data/
-qdrant_storage/
-open-webui/
-*.log
-__pycache__/
-*.pyc
-.env
-.DS_Store
