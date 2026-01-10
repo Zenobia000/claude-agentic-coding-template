@@ -42,7 +42,9 @@
       "Bash(git checkout:*)",
       "Bash(node:*)",
       "Bash(chmod:*)",
-      "Bash(bash:*)"
+      "Bash(bash:*)",
+      "Bash(./.claude/taskmaster-generate-docs.sh:*)",
+      "Bash(dos2unix:*)"
     ],
     "deny": [],
     "ask": []

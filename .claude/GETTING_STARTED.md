@@ -38,20 +38,24 @@ ls -la
 
 ### 啟動您的第一個專案
 
-1. **複製範本檔案**
-```bash
-# 複製專案初始化範本
-cp CLAUDE_TEMPLATE.md my-first-project.md
-```
-
-2. **開啟 Claude Code**
+1. **開啟 Claude Code**
    - 確保您已經安裝 Claude Code
-   - 在 Claude Code 中開啟這個專案目錄
+   - 在專案目錄中執行：
+   ```bash
+   claude code
+   ```
 
-3. **自動偵測與初始化**
+2. **自動偵測與初始化**
    - Claude Code 會自動偵測到 `CLAUDE_TEMPLATE.md` 檔案
-   - 系統會問您：「我偵測到一個 TaskMaster 專案範本。您想要我初始化一個智能協作專案嗎？」
-   - **選擇「是」開始初始化流程**
+   - 系統會顯示 TaskMaster 歡迎訊息
+   - 提示您執行初始化指令
+
+3. **執行初始化**
+   ```bash
+   /task-init my-first-project
+   ```
+   - 系統會引導您完成七問澄清
+   - **無需手動複製或修改任何檔案**
 
 ## 📋 第三步：跟著引導完成設定
 

@@ -1,147 +1,240 @@
 ---
-description: TaskMaster project initialization integrated with CLAUDE_TEMPLATE.md workflow
-argument-hint: [project-name] --template=[template] --mode=[mode]
+description: TaskMaster project initialization - Auto-triggered by CLAUDE_TEMPLATE.md
+argument-hint: [project-name]
 allowed-tools: Read(/**), Write(/**), Edit(/**), Bash(*), Glob(*), Grep(*)
 ---
 
-# 🚀 TaskMaster Project Initialization (Integrated)
+# 🚀 TaskMaster Project Initialization
 
-## 🎯 自動觸發條件
+## 🎯 自動觸發流程
 
-**當偵測到 `CLAUDE_TEMPLATE.md` 檔案時，自動執行此初始化流程**
+**當 Claude Code 偵測到 CLAUDE_TEMPLATE.md 時，會自動執行以下流程：**
 
-## 📋 TaskMaster 初始化流程
-
-### Step 1: 基礎資訊收集（繼承 CLAUDE_TEMPLATE.md）
+### Step 1: 顯示模板資訊
 ```
-✅ 從 CLAUDE_TEMPLATE.md 工作流程繼承：
-├── PROJECT_NAME: $1
-├── PROJECT_DESCRIPTION: [已收集]
-├── 主要程式語言: [已確認]
-├── VibeCoding 7問澄清: [已完成]
-└── 人類確認設定: [已確認]
+🎯 模板作者：Sunny | v2.0 - 人類主導版
+📺 教學影片：youtube
+🤖 TaskMaster 功能：人類主導的文檔導向智能協作開發平台
 ```
 
-### Step 2: TaskMaster 智能分析（文檔導向流程）
-
+### Step 2: 詢問使用者
 ```
-🤖 TaskMaster Hub 分析進行中...
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+❓ 我偵測到一個 TaskMaster 專案範本。
+   您想要我初始化一個智能協作專案嗎？
 
-📚 載入相關 VibeCoding 範本...
-📄 生成文檔導向任務流程 (Phase 1-2 文檔 → 駕駛員審查 → Phase 3 開發)...
-🤖 Hub-and-Spoke 協調策略分析...
-📊 專案複雜度和文檔需求評估...
-📋 建立包含審查閘道的 WBS Todo List 結構...
-🔍 設置駕駛員審查檢查點...
+   [是] → 執行 /task-init 初始化工作流程
+   [否] → 保留 CLAUDE_TEMPLATE.md 供日後使用
 ```
 
-### Step 3: TaskMaster 專案計劃展示
+### Step 3: 如果使用者同意，自動執行初始化
 
+## 📋 完整初始化工作流程
+
+### Phase 1: 人類主導的基礎澄清 👨‍💻
+
+**Claude Code 直接與人類對話**
+
+#### 快速資訊收集
 ```
-📊 TaskMaster 專案初始化計劃:
-══════════════════════════════════════════════════════════
-
-🎯 專案名稱: $1
-📝 專案描述: [從 CLAUDE_TEMPLATE 繼承]
-🏗️ 專案類型: [基於 7問分析判定]
-
-📚 載入的 VibeCoding 範本 (v2.1):
-├── 08_project_structure_guide.md (相關度: 95%)
-├── 05_architecture_and_design_document.md (相關度: 88%)
-├── 07_module_specification_and_tests.md (相關度: 82%)
-├── 13_security_and_readiness_checklists.md (相關度: 75%)
-└── [其他相關範本...]
-
-📝 生成的文檔導向任務列表: [計算中...]
-📄 Phase 1-2 文檔生成計劃: [規劃中...]
-🤖 Hub 協調策略: [分析中...]
-⏱️ 文檔審查及開發時程: [評估中...]
+1. "您的專案名稱是什麼？" → [PROJECT_NAME]
+2. "專案的簡要描述？" → [PROJECT_DESCRIPTION]
+3. "主要程式語言？" (Python/JavaScript/TypeScript/Java/其他)
+4. "是否設定 GitHub 儲存庫？" (是-新增/是-現有/否)
 ```
 
-### Step 4: Hub-and-Spoke 分析結果
+### Phase 2: VibeCoding 7問快速澄清
 
+**必須完整執行的七個關鍵問題：**
+
+#### 🎯 問題 1: 核心問題定義
 ```
-🎯 TaskMaster Hub 協調分析:
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+這個專案主要解決什麼問題？請詳細描述：
+- 目前的痛點是什麼？
+- 誰會遇到這個問題？
+- 為什麼現有方案無法滿足？
 
-📊 專案複雜度: [Low/Medium/High]
-🎯 協調策略: [Sequential/Parallel/Hybrid]
-📈 預估成功率: [Based on analysis]
-
-🤖 建議的智能體協調順序:
-1. 🏗️ infrastructure-agent → 專案基礎設置
-2. 🟡 code-quality-specialist → 品質框架建立
-3. 🔴 security-infrastructure-auditor → 安全基線檢查
-4. 🟢 test-automation-engineer → 測試框架建置
-5. 📝 documentation-specialist → 文檔體系建立
-
-📋 WBS Todo List 預覽:
-├── Phase 1: 專案設置 (5 tasks, ~2 hours)
-├── Phase 2: 開發環境 (8 tasks, ~3 hours)
-├── Phase 3: 核心功能 (12 tasks, ~8 hours)
-└── Phase 4: 品質保證 (6 tasks, ~2 hours)
-
-總計: 31 tasks, 預估 15 hours
+範例回答：
+"目前團隊在管理多個微服務時，缺乏統一的監控和日誌管理平台，
+導致問題排查效率低下，需要一個整合式的觀測平台。"
 ```
 
-### Step 5: 人類駕駛員最終確認
-
+#### 🎯 問題 2: 核心功能範圍
 ```
-🤖⚔️ 人類駕駛員決策點:
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+請列出 3-5 個最重要的功能需求：
+1. [核心功能 1]
+2. [核心功能 2]
+3. [核心功能 3]
+4. [可選功能 4]
+5. [可選功能 5]
 
-❓ TaskMaster 專案初始化確認:
-
-🎯 專案設定確認:
-  [1] ✅ 確認 TaskMaster 計劃，開始初始化
-  [2] 🔧 調整任務優先順序和範圍
-  [3] 📋 查看完整任務列表詳情
-  [4] 🤖 修改 Hub 協調策略
-  [5] 📚 調整 VibeCoding 範本選擇
-  [6] ❌ 取消 TaskMaster 初始化
-
-🎛️ TaskMaster 模式選擇:
-  [H] HIGH - 每個任務都需要人類確認
-  [M] MEDIUM - 關鍵決策點確認 (推薦)
-  [L] LOW - 僅重要里程碑確認
-  [A] ADVISORY - Hub 建議模式，最小干預
-
-🛡️ 緊急控制設定:
-  [P] 設置暫停檢查點
-  [S] 啟用即時狀態監控
-  [E] 配置緊急停止機制
-
-請選擇專案設定 (1-6) 和模式 (H/M/L/A):
+範例：
+1. 即時日誌聚合和搜索
+2. 性能指標監控和警報
+3. 服務依賴關係可視化
+4. 異常檢測和根因分析
+5. 自定義儀表板
 ```
 
-### Step 6: TaskMaster 系統建立
-
-**如果確認初始化，TaskMaster 將執行：**
-
+#### 🎯 問題 3: 技術偏好和約束
 ```
-🚀 TaskMaster 系統建立中...
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+技術選型和限制條件：
+- 偏好的技術棧：[語言/框架/資料庫]
+- 必須整合的系統：[現有系統/API]
+- 技術限制：[效能/安全/合規要求]
+- 部署環境：[雲端/本地/混合]
 
-✅ 建立專案目錄結構
-✅ 初始化 .claude/taskmaster-data/
-   ├── project.json (專案配置)
-   └── wbs-todos.json (WBS Todo List)
-✅ 載入 TaskMaster 核心系統
-✅ 配置 Hub-and-Spoke 協調器
-✅ 建立 VibeCoding 範本整合
-✅ 生成客製化 CLAUDE.md
-✅ 設定 Git 和專案檔案
-✅ 刪除 CLAUDE_TEMPLATE.md
-
-🎉 TaskMaster 專案初始化完成！
+範例：
+"必須使用 Python/FastAPI，需要整合現有的 Elasticsearch，
+要符合 GDPR 合規要求，部署在 AWS EKS 上。"
 ```
 
-### Step 7: 立即可用功能
+#### 🎯 問題 4: 用戶體驗期望
+```
+期望的使用體驗：
+- 主要用戶群體：[開發者/運維/業務人員]
+- 介面類型：[Web/CLI/API/Mobile]
+- 易用性要求：[專業級/一般用戶/零門檻]
+- 關鍵用戶流程：[描述最重要的操作流程]
+
+範例：
+"主要給運維團隊使用，需要 Web 介面和 CLI 工具，
+專業級工具但要有良好的視覺化，關鍵流程是快速定位問題根源。"
+```
+
+#### 🎯 問題 5: 規模和性能要求
+```
+系統規模和效能指標：
+- 預期用戶數量：[同時在線/總用戶數]
+- 數據量級：[每日數據量/存儲需求]
+- 效能要求：[響應時間/吞吐量]
+- 擴展性需求：[垂直/水平擴展計劃]
+
+範例：
+"支持 100 個同時在線用戶，每日處理 1TB 日誌數據，
+查詢響應時間 <2秒，需要支持水平擴展。"
+```
+
+#### 🎯 問題 6: 時程和資源限制
+```
+專案時程和資源：
+- 交付時程：[MVP/正式版本時間]
+- 團隊規模：[開發人數/角色分工]
+- 預算限制：[基礎設施/第三方服務]
+- 維護計劃：[長期維護/一次性交付]
+
+範例：
+"需要在 3 個月內交付 MVP，2 名全職開發者，
+月度雲端預算 $5000，需要長期維護和迭代。"
+```
+
+#### 🎯 問題 7: 成功標準定義
+```
+如何衡量專案成功：
+- 技術指標：[性能/可用性/品質]
+- 業務指標：[ROI/效率提升/成本節省]
+- 用戶指標：[滿意度/採用率]
+- 里程碑：[關鍵檢查點]
+
+範例：
+"技術上達到 99.9% 可用性，問題定位時間從平均 2 小時降到 15 分鐘，
+80% 的運維團隊主動使用，3 個月內完成核心功能上線。"
+```
+
+### Phase 3: 人類確認專案設定
+
+```
+📁 推薦專案結構：[簡易型/標準型/AI-ML型] (Claude 基於回答建議)
+🎛️ Subagent 建議頻率：[HIGH/MEDIUM/LOW/OFF] (可調整)
+🔧 專案複雜度：[根據需求分析]
+
+❓ 確認以上設定？(y/N)
+```
+
+## 🤖 TaskMaster 智能專案初始化
+
+### 自動執行的 TaskMaster 流程
+
+基於七問回答，系統將：
+
+1. **載入 VibeCoding 範本** - 基於專案類型自動選擇相關範本
+2. **生成智能任務列表** - 基於範本和需求生成 WBS 任務
+3. **Hub-and-Spoke 分析** - 分析專案複雜度和協調策略
+4. **建立 WBS Todo List** - 統一任務狀態管理系統
+5. **人類確認專案計劃** - 駕駛員最終決策
+
+### Claude Code 執行步驟
+
+1. **建立專案結構** (基於 TaskMaster 分析)
+   ```
+   ✅ 建立專案目錄結構
+   ✅ 初始化 .claude/taskmaster-data/
+      ├── project.json (專案配置)
+      └── wbs-todos.json (WBS Todo List)
+   ```
+
+2. **生成整合式 CLAUDE.md**
+   - 包含 Linus 心法 + TaskMaster 協作
+   - 基於七問回答的專案特定配置
+   - 智能體協作規則
+
+3. **初始化 git 並設定基本檔案**
+   ```bash
+   git init
+   git add .
+   git commit -m "feat: initialize TaskMaster project"
+   ```
+
+4. **設定 GitHub** (如用戶選擇)
+   ```bash
+   gh repo create [project-name] --public --confirm
+   git remote add origin [url]
+   git push -u origin main
+   ```
+
+5. **刪除 CLAUDE_TEMPLATE.md**
+   ```bash
+   rm CLAUDE_TEMPLATE.md
+   echo "✅ 模板檔案已刪除，專案初始化完成"
+   ```
+
+## 📊 文檔導向的任務流程
+
+### Phase 1-2: 文檔生成階段
+```
+📄 自動生成的專案文檔：
+├── docs/PRD.md                 # 產品需求文檔（基於七問）
+├── docs/Architecture.md        # 系統架構文檔
+├── docs/API_Specification.md   # API 設計規格
+├── docs/Module_Specification.md # 模組規格文檔
+└── docs/Test_Plan.md           # 測試計劃文檔
+```
+
+### 審查閘道
+```
+🚪 駕駛員文檔審查檢查點：
+- 所有 Phase 1-2 文檔必須經過人類審查
+- 審查通過後才能進入 Phase 3 開發
+- 可以要求修改或重新生成文檔
+```
+
+### Phase 3: 開發實作階段
+```
+🔨 開發任務（文檔審查通過後）：
+├── 環境設置和專案初始化
+├── 核心功能模組開發
+├── API 端點實作
+├── 前端介面開發（如需要）
+├── 測試編寫和執行
+└── 部署和監控設置
+```
+
+## 🎯 TaskMaster 控制中心
+
+初始化完成後，立即可用的功能：
 
 ```
 📋 TaskMaster 控制中心已啟用:
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 🎛️ 立即可用命令:
 ├── /task-status     → 查看完整專案狀態
@@ -151,8 +244,8 @@ allowed-tools: Read(/**), Write(/**), Edit(/**), Bash(*), Glob(*), Grep(*)
 └── /review-code     → Hub 協調程式碼審查
 
 📊 WBS Todo List 已建立:
-├── 📋 總任務: 31 個
-├── ⏳ 待處理: 31 個
+├── 📋 總任務: [根據專案計算]
+├── ⏳ 待處理: [待處理數量]
 ├── 🎯 當前: 準備開始第一個任務
 └── 📈 進度: 0% (初始化完成)
 
@@ -162,37 +255,39 @@ allowed-tools: Read(/**), Write(/**), Edit(/**), Bash(*), Glob(*), Grep(*)
 3. 隨時可用 /pause 暫停 TaskMaster
 ```
 
-## 🔧 進階初始化選項
+## ⚠️ 重要注意事項
 
-### 範本特化初始化
+1. **必須完成七問** - 不允許跳過任何問題
+2. **文檔優先** - Phase 1-2 必須先生成文檔
+3. **人類審查** - 文檔必須經過駕駛員審查
+4. **保持控制** - 所有重要決策由人類做出
+
+## 🚀 使用方式
+
+### 標準觸發流程
+1. Claude Code 偵測到 CLAUDE_TEMPLATE.md
+2. 顯示模板資訊並詢問使用者
+3. 使用者確認後自動執行 `/task-init [project-name]`
+4. 完成七問澄清流程
+5. 生成文檔和任務
+6. 建立 TaskMaster 系統
+7. 刪除 CLAUDE_TEMPLATE.md
+
+### 手動執行
 ```bash
-/task-init my-project --template=react-typescript
-/task-init my-project --template=api-service
-/task-init my-project --template=ai-ml-project
+# 如果需要手動執行初始化
+/task-init my-project
 ```
 
-### 協調模式設定
-```bash
-/task-init my-project --mode=sequential    # 序列執行，每步確認
-/task-init my-project --mode=parallel      # 並行優化執行
-/task-init my-project --mode=advisory      # 建議模式，最小干預
-```
+## ✅ 預期結果
 
-## 🤖⚔️ 與 CLAUDE_TEMPLATE.md 的整合優勢
+完成初始化後，您將獲得：
+1. **完整的專案結構** - 基於專案類型建立
+2. **客製化 CLAUDE.md** - 包含專案特定規則
+3. **專案文檔** - PRD、架構、API 等文檔
+4. **WBS Todo List** - 完整的任務管理系統
+5. **Git/GitHub 設置** - 版本控制就緒
 
-### 1. 無縫承接
-- 自動繼承 CLAUDE_TEMPLATE.md 的所有設定
-- VibeCoding 7問分析直接轉為任務生成依據
-- Linus 心法整合到 Hub 協調邏輯
-
-### 2. 智能增強
-- 基於需求分析自動選擇相關 VibeCoding 範本
-- Hub 智能分析專案複雜度和協調策略
-- WBS Todo List 提供全局開發狀態掌控
-
-### 3. 人類控制
-- 保持 CLAUDE_TEMPLATE.md 的人類主導理念
-- 所有 TaskMaster 決策都需要人類確認
-- 緊急控制機制隨時可用
+---
 
 **Ready to initialize your TaskMaster-powered project!** 🚀🤖⚔️

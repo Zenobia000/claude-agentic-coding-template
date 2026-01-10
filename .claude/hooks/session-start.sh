@@ -106,6 +106,11 @@ if [ -f "$PROJECT_ROOT/CLAUDE_TEMPLATE.md" ]; then
                 log "⚠️ 無法切換到專案目錄"
                 exit 0
             }
+
+            # 建立觸發標記文件，讓 Claude Code 知道需要自動執行 /task-init
+            echo "auto-init-requested" > "$CLAUDE_DIR/.taskmaster-auto-init"
+            log "📌 建立自動初始化標記文件"
+
             # 使用 || true 確保即使 Node.js 返回非零碼也不會中斷
             node "$CLAUDE_DIR/taskmaster.js" --hook-trigger=session-start || {
                 log "⚠️ TaskMaster 處理器執行完成 (退出碼: $?)"

@@ -155,13 +155,16 @@ TaskMaster 提供完整的 WBS (Work Breakdown Structure) Todo List，支援文�
 
 ## 🔧 安裝和使用
 
+### 0. 自動偵測
+當開啟 Claude Code 時，系統會自動偵測 `CLAUDE_TEMPLATE.md` 並顯示歡迎訊息。
+
 ### 1. 初始化專案
 ```bash
 /task-init my-project
 ```
 
 TaskMaster 將會：
-1. 分析專案需求
+1. 執行七問澄清流程
 2. 載入相關 VibeCoding 範本
 3. 生成智能任務列表
 4. 建立 WBS Todo List
@@ -184,29 +187,32 @@ TaskMaster Hub 將分析並建議最佳執行策略。
 /hub-delegate code-quality-specialist
 ```
 
-## 🤖 Subagent 整合
+## 🤖 智能體 (Agent) 整合
 
-### 🔍 當前狀態
+### 🔍 可用的智能體
 
-TaskMaster 已準備好與 Subagent 整合，但需要了解：
+TaskMaster 已整合 8 個專業智能體：
 
-1. **調用機制**: Subagent 是如何被調用的？
-2. **資訊共享**: 任務資訊是否可以傳遞給 Subagent？
-3. **狀態回報**: Subagent 是否可以回報執行狀態？
-4. **結果收集**: 如何收集 Subagent 的執行結果？
+1. **general-purpose** - 通用任務處理
+2. **code-quality-specialist** - 程式碼品質檢查
+3. **test-automation-engineer** - 測試自動化
+4. **security-infrastructure-auditor** - 安全稽核
+5. **deployment-operations-engineer** - 部署維運
+6. **documentation-specialist** - 文檔管理
+7. **workflow-template-manager** - 範本管理
+8. **e2e-validation-specialist** - 端到端測試
 
-### 🔧 待實現的整合點
+### 🔧 智能體協調機制
 
-```javascript
-// 在 taskmaster.js 中的 callSubagent 方法
-async callSubagent(task, agent, hubAnalysis) {
-    // TODO: 實現與 Claude Code Subagent 的實際通信
-    // 需要了解：
-    // 1. 如何調用特定的 Subagent
-    // 2. 如何傳遞任務上下文和 WBS 資訊
-    // 3. 如何接收執行結果和狀態更新
-    // 4. 如何處理執行失敗和錯誤
-}
+```bash
+# 自動委派（Hub 分析並建議）
+/task-next --confirm
+
+# 手動指定智能體
+/hub-delegate code-quality-specialist --task=current
+
+# 查看智能體狀態
+/task-status --agents
 ```
 
 ## 🛡️ 人類控制機制
@@ -245,11 +251,28 @@ async callSubagent(task, agent, hubAnalysis) {
     └── wbs-todos.json         → WBS Todo 狀態
 ```
 
-## 🚀 開始使用
+## 🚀 快速開始
 
-1. 確保 `.claude/taskmaster.js` 已正確放置
-2. 使用 `/task-init project-name` 初始化第一個專案
-3. 使用 `/task-status` 查看狀態
-4. 使用 `/task-next` 開始智能任務協調
+1. Clone 此專案到本地
+2. 執行 `claude code` 開啟 Claude Code
+3. 系統自動偵測並顯示歡迎訊息
+4. 執行 `/task-init project-name` 開始您的專案
+5. 跟隨七問澄清流程完成初始化
+
+## 📈 版本資訊
+
+**當前版本**: v3.1 (2026-01-11)
+- ✅ 修復自動觸發機制
+- ✅ 整合單一 task-init 指令
+- ✅ 完整七問澄清流程
+- ✅ 20 個 VibeCoding 範本
+- ✅ 8 個專業智能體
+
+## 🔗 相關文檔
+
+- **[入門指南](GETTING_STARTED.md)** - 詳細的 8 步驟教學
+- **[系統架構](ARCHITECTURE.md)** - 深入理解 TaskMaster 設計
+- **[客製化指南](../CUSTOMIZATION.md)** - 擴展和自訂 TaskMaster
+- **[專案結構](../PROJECT_STRUCTURE.md)** - 完整檔案結構說明
 
 **Ready to pilot your development with TaskMaster!** 🤖⚔️

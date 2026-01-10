@@ -249,14 +249,24 @@ class TaskMaster {
 
         try {
             let generatedResult = {};
-            const templatePath = `VibeCoding_Workflow_Templates/${task.template}`;
+
+            // 修正路徑：使用絕對路徑
+            const projectRoot = path.dirname(__dirname); // 專案根目錄
+            const templatePath = path.join(projectRoot, 'VibeCoding_Workflow_Templates', task.template);
 
             // 檢查範本文件是否存在
             try {
                 await fs.access(templatePath);
             } catch (error) {
                 console.log(`⚠️ 範本文件不存在: ${templatePath}`);
-                throw new Error(`範本文件不存在: ${templatePath}`);
+                // 嘗試其他可能的路徑
+                const altTemplatePath = path.join(__dirname, 'templates', task.template);
+                try {
+                    await fs.access(altTemplatePath);
+                    templatePath = altTemplatePath;
+                } catch {
+                    throw new Error(`範本文件不存在: ${task.template}`);
+                }
             }
 
             // 讀取範本內容
@@ -292,8 +302,13 @@ class TaskMaster {
                 generatedResult = await this.docGenerator.generateFromTemplate(task.template, templateContent);
             }
 
+            // 確保使用絕對路徑
+            const absoluteDeliverable = path.isAbsolute(task.deliverable)
+                ? task.deliverable
+                : path.join(projectRoot, task.deliverable);
+
             // 確保目標目錄存在
-            const docsDir = path.dirname(task.deliverable);
+            const docsDir = path.dirname(absoluteDeliverable);
             await fs.mkdir(docsDir, { recursive: true });
 
             // 寫入生成的文檔
@@ -307,7 +322,7 @@ class TaskMaster {
                 throw new Error('文檔生成器返回了無效的結果');
             }
 
-            await fs.writeFile(task.deliverable, documentContent, 'utf8');
+            await fs.writeFile(absoluteDeliverable, documentContent, 'utf8');
             console.log(`✅ 文檔已成功寫入: ${task.deliverable}`);
 
             return {

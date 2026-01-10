@@ -5,24 +5,31 @@
 本專案已根據 TaskMaster 系統架構完全重新組織，以下是當前的完整目錄結構：
 
 ```
-📦 TaskMaster & Claude Code Collective
+📦 TaskMaster & Claude Code Collective (v3.1 - 清理版)
 ├── 📄 README.md                        # 🏠 系統總覽和快速開始
 ├── 📄 CLAUDE_TEMPLATE.md               # ⭐ 主初始化範本 (自動觸發 TaskMaster)
 ├── 📄 PROJECT_STRUCTURE.md             # 📁 本檔案：專案結構說明
 ├── 📄 LICENSE                          # ⚖️ 開源授權條款
 ├── 📄 .gitignore                       # 🚫 Git 忽略檔案配置
 ├── 📄 .mcp.json                        # 🔧 MCP 服務配置
-├── 📁 .claude/                         # 🤖 TaskMaster 核心系統
-│   ├── 🚀 taskmaster.js                # TaskMaster 核心引擎 (5個主要類別)
+├── 📁 .claude/                         # 🤖 TaskMaster 核心系統 (v3.1)
+│   ├── 🚀 taskmaster.js                # TaskMaster 核心引擎 (修復版)
 │   ├── 📋 GETTING_STARTED.md           # 完整初學者指南 (8步驟教學)
 │   ├── 🏗️ ARCHITECTURE.md             # 系統架構設計 + 完整設計分析
 │   ├── 🤖 TASKMASTER_README.md         # 技術文檔和功能說明
-│   ├── 🆘 TROUBLESHOOTING.md           # 故障排除和常見問題
 │   ├── 🔗 SUBAGENT_INTEGRATION_GUIDE.md # 智能體整合機制說明
-│   ├── 📄 README.md                    # .claude 目錄總覽
+│   ├── 🔒 CROSS_PLATFORM_COMPATIBILITY.md # 跨平台相容性說明
 │   ├── 📄 settings.local.json          # Claude Code 本地設定
+│   ├── 📄 hooks-config.json            # Hooks 系統配置
+│   ├── 📁 hooks/                       # 🪝 自動化 Hook 系統
+│   │   ├── 📄 session-start.sh         # 會話開始 hook (修復版)
+│   │   ├── 📄 user-prompt-submit.sh    # 用戶輸入 hook
+│   │   ├── 📄 post-write.sh           # 檔案寫入後 hook
+│   │   ├── 📄 pre-tool-use.sh         # 工具使用前 hook
+│   │   ├── 📄 hook-utils.sh           # Hook 共用工具函式
+│   │   └── 📄 README.md                # Hooks 系統說明
 │   ├── 📁 commands/                    # 🎛️ TaskMaster 指令系統 (8個指令)
-│   │   ├── 🎯 task-init.md             # 專案初始化指令
+│   │   ├── 🎯 task-init.md             # 專案初始化指令 (整合版)
 │   │   ├── 📊 task-status.md           # 狀態查詢指令
 │   │   ├── 🎪 task-next.md             # 下個任務智能建議
 │   │   ├── 🤖 hub-delegate.md          # Hub 協調委派指令
@@ -30,10 +37,7 @@
 │   │   ├── 🎛️ suggest-mode.md          # 建議密度調整
 │   │   ├── ✅ check-quality.md         # 品質檢查指令
 │   │   └── 📝 template-check.md        # 範本檢查指令
-│   ├── 📁 taskmaster-data/             # 💾 專案資料存儲 (使用時動態產生)
-│   │   ├── 📄 project.json             # 專案配置檔案
-│   │   └── 📄 wbs-todos.json           # WBS Todo List 狀態檔案
-│   ├── 📁 agents/                      # 🤖 Claude Code 智能體配置 (7個)
+│   ├── 📁 agents/                      # 🤖 Claude Code 智能體配置 (8個)
 │   │   ├── 🔧 general-purpose.md       # 通用任務處理智能體
 │   │   ├── 🔍 code-quality-specialist.md # 程式碼品質專家
 │   │   ├── 🧪 test-automation-engineer.md # 測試自動化工程師
@@ -51,28 +55,41 @@
 │   │   ├── 📁 deployment/             # 部署維運報告
 │   │   ├── 📁 docs/                   # 文檔管理報告
 │   │   └── 📁 workflow/               # 工作流程管理報告
+│   ├── 📁 coordination/                # 🤝 協調系統 (可選)
+│   ├── 📁 output-styles/               # 📊 輸出樣式配置
 │   └── 📁 ARCHIVE/                     # 🗃️ 舊架構檔案歸檔
 │       ├── 📁 duplicated-claude-dir/   # 重複的 .claude 目錄
 │       └── 📁 old-template-docs/       # 舊版範本文檔
-│           ├── 📄 AI_Driven_CLI_Workflow_Setup_Guide.md
-│           ├── 📄 TEMPLATE_SETUP_CHECKLIST.md
-│           ├── 📄 TEMPLATE_SUMMARY.md
-│           ├── 📄 TEMPLATE_USAGE_GUIDE.md
-│           └── 📁 Claude Code Starter Template/
-└── 📁 VibeCoding_Workflow_Templates/   # 🎨 企業級開發範本庫 (完整10個)
-    ├── 📊 01_project_brief_and_prd.md        # 專案簡報與 PRD
-    ├── 🧪 02_behavior_driven_development_guide.md # BDD 行為驅動開發
-    ├── 🏗️ 03_architecture_and_design_document.md # 架構與設計文件
-    ├── 🔧 04_api_design_specification.md      # API 設計規格
-    ├── 📋 05_module_specification_and_tests.md # 模組規格與測試
-    ├── 🛡️ 06_security_and_readiness_checklists.md # 安全與就緒檢查
-    ├── 📁 07_project_structure_guide.md       # 專案結構指南
-    ├── 📝 08_code_review_and_refactoring_guide.md # 程式碼審查與重構
-    ├── 🚀 09_deployment_and_operations_guide.md # 部署與維運指南
-    └── 📚 10_documentation_and_maintenance_guide.md # 文檔與維護指南
+└── 📁 VibeCoding_Workflow_Templates/   # 🎨 企業級開發範本庫 (20個範本)
+    ├── 📚 00_workflow_manual.md                # 完整工作流程手冊
+    ├── 👨‍🍳 01_development_workflow_cookbook.md   # 開發流程食譜
+    ├── 📊 02_project_brief_and_prd.md        # 專案簡報與 PRD
+    ├── 🧪 03_behavior_driven_development_guide.md # BDD 行為驅動開發
+    ├── 📋 04_architecture_decision_record_template.md # ADR 架構決策記錄
+    ├── 🏗️ 05_architecture_and_design_document.md # 架構與設計文件
+    ├── 🔧 06_api_design_specification.md      # API 設計規格
+    ├── 📦 07_module_specification_and_tests.md # 模組規格與測試
+    ├── 📁 08_project_structure_guide.md       # 專案結構指南
+    ├── 🔗 09_file_dependencies_template.md    # 檔案依賴關係圖
+    ├── 🏛️ 10_class_relationships_template.md  # 類別關係架構
+    ├── 📝 11_code_review_and_refactoring_guide.md # 程式碼審查與重構
+    ├── 🎨 12_frontend_architecture_specification.md # 前端架構規範
+    ├── 🛡️ 13_security_and_readiness_checklists.md # 安全與就緒檢查
+    ├── 🚀 14_deployment_and_operations_guide.md # 部署與維運指南
+    ├── 📚 15_documentation_and_maintenance_guide.md # 文檔與維護指南
+    ├── 📊 16_wbs_development_plan_template.md # WBS 開發計劃範本
+    ├── 🗂️ 17_frontend_information_architecture_template.md # 前端資訊架構
+    ├── 📇 INDEX.md                            # 範本索引與導覽
+    └── 🎯 output_style.md                     # 輸出格式標準
 ```
 
-## 🔧 整理完成的改進
+## 🔧 最新更新 (2026-01-11)
+
+### ✅ **v3.1 清理版改進**
+1. **整合單一指令**: 只保留一個 `task-init.md`，遵循 CLAUDE_TEMPLATE.md 流程
+2. **移除舊檔案**: 刪除 Cursor 相關檔案和重複的範本
+3. **清理測試檔案**: 移除所有初始化後產生的檔案
+4. **保持乾淨狀態**: 專案回到初始狀態，準備全新開始
 
 ### ✅ **符合 TaskMaster 架構設計**
 1. **核心檔案就位**: `taskmaster.js` 核心引擎在正確位置
@@ -87,17 +104,17 @@
 4. **歸檔冗餘檔案**: 移至 `ARCHIVE/old-template-docs/` 和 `ARCHIVE/duplicated-claude-dir/`
 
 ### ✅ **VibeCoding 範本完善**
-1. **重新編號**: 按照標準 01-10 編號
-2. **補充缺失**: 新增 08、09、10 範本
-3. **命名標準化**: 統一檔案命名規則
-4. **內容完整**: 每個範本都包含完整的指導內容
+1. **完整範本庫**: 總共 20 個企業級開發範本
+2. **系統化編號**: 從 00 到 17 系統化編號
+3. **專業分類**: 涵蓋完整軟體開發生命週期
+4. **索引導覽**: INDEX.md 提供範本導覽與使用指南
 
 ## 🎯 使用說明
 
 ### 📋 **新手用戶**
-1. 閱讀 `README.md` 了解系統總覽
-2. 跟隨 `.claude/GETTING_STARTED.md` 完成 8 步驟設定
-3. 複製 `CLAUDE_TEMPLATE.md` 開始第一個專案
+1. 閱讀 `README.md` 了解系統總覽（快速開始）
+2. 跟隨 `.claude/GETTING_STARTED.md` 完成詳細教學
+3. 執行 `claude code` 自動偵測並開始專案
 
 ### 🔧 **進階用戶**
 1. 查看 `.claude/ARCHITECTURE.md` 了解系統設計
@@ -105,15 +122,16 @@
 3. 使用 8 個 TaskMaster 指令進行開發協作
 
 ### 🎨 **範本使用**
-1. `VibeCoding_Workflow_Templates/` 包含 10 個企業級範本
+1. `VibeCoding_Workflow_Templates/` 包含 20 個企業級範本
 2. TaskMaster Hub 會智能匹配相關範本
 3. 支援 JIT (Just-in-Time) 範本載入
 
 ## 📝 注意事項
 
-### 💾 **動態產生的目錄**
+### 💾 **動態產生的目錄（初始化後）**
 - `.claude/taskmaster-data/` 會在專案初始化時自動建立
-- 包含 `project.json` 和 `wbs-todos.json` 兩個核心檔案
+- `docs/` 會在文檔生成時自動建立
+- 包含 `project.json` 和 `wbs-todos.json` 等核心檔案
 
 ### 🗃️ **ARCHIVE 目錄**
 - 保留所有舊檔案供參考
