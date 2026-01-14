@@ -140,12 +140,44 @@ allowed-tools: Read(/**), Write(/**), Edit(/**), Bash(*), Glob(*), Grep(*)
 80% 的運維團隊主動使用，3 個月內完成核心功能上線。"
 ```
 
+### Phase 2.5: 🆕 自動文檔生成
+
+**七問完成後，自動觸發 `/generate-docs`**
+
+```
+🎯 七問已完成！正在生成專案文檔...
+
+📄 VibeCoding 範本填充中：
+├── 載入 VibeCoding_Workflow_Templates/ ✅
+├── 映射七問答案到範本欄位 ✅
+└── 生成專案文檔...
+
+📁 生成的文檔：
+├── docs/01_PRD.md              [████████░░] 85%
+├── docs/02_Architecture.md     [██████████] 100%
+├── docs/03_UX_Design.md        [██████░░░░] 60%
+├── docs/04_WBS.md              [████████░░] 80%
+└── docs/05_Module_Spec.md      [████████░░] 75%
+
+📊 整體完整性: 80%
+
+🚪 審查閘道：
+❓ 請審查生成的文檔：
+[1] ✅ 文檔通過 - 繼續初始化
+[2] 📝 需要修改 - 指定要調整的文檔
+[3] 🔄 重新生成 - 補充七問答案
+[4] ⏸️ 稍後審查 - 先完成初始化
+```
+
+**💡 文檔審查通過後才會進入 Phase 3**
+
 ### Phase 3: 人類確認專案設定
 
 ```
 📁 推薦專案結構：[簡易型/標準型/AI-ML型] (Claude 基於回答建議)
 🎛️ Subagent 建議頻率：[HIGH/MEDIUM/LOW/OFF] (可調整)
 🔧 專案複雜度：[根據需求分析]
+📄 文檔狀態：已生成並通過審查 ✅
 
 ❓ 確認以上設定？(y/N)
 ```
@@ -199,22 +231,41 @@ allowed-tools: Read(/**), Write(/**), Edit(/**), Bash(*), Glob(*), Grep(*)
 
 ## 📊 文檔導向的任務流程
 
-### Phase 1-2: 文檔生成階段
+### Phase 2.5: VibeCoding 文檔生成（自動）
+
+**觸發條件**: 七問完成後自動執行 `/generate-docs`
+
 ```
-📄 自動生成的專案文檔：
-├── docs/PRD.md                 # 產品需求文檔（基於七問）
-├── docs/Architecture.md        # 系統架構文檔
-├── docs/API_Specification.md   # API 設計規格
-├── docs/Module_Specification.md # 模組規格文檔
-└── docs/Test_Plan.md           # 測試計劃文檔
+📄 VibeCoding 範本 → 專案文檔：
+
+VibeCoding_Workflow_Templates/          docs/
+├── 02_project_brief_and_prd.md    →   ├── 01_PRD.md
+├── 05_architecture_and_design.md  →   ├── 02_Architecture.md
+├── 17_frontend_ia_template.md     →   ├── 03_UX_Design.md
+├── 16_wbs_development_plan.md     →   ├── 04_WBS.md
+├── 07_module_specification.md     →   ├── 05_Module_Spec.md
+└── 06_api_design_specification.md →   └── 06_API_Spec.md
 ```
+
+### 七問→文檔映射
+
+| 七問 | 主要填充文檔 |
+|------|-------------|
+| Q1 核心問題 | 01_PRD.md |
+| Q2 核心功能 | 01_PRD.md, 05_Module_Spec.md |
+| Q3 技術偏好 | 02_Architecture.md |
+| Q4 用戶體驗 | 03_UX_Design.md |
+| Q5 規模性能 | 02_Architecture.md |
+| Q6 時程資源 | 04_WBS.md |
+| Q7 成功標準 | 01_PRD.md, 04_WBS.md |
 
 ### 審查閘道
 ```
 🚪 駕駛員文檔審查檢查點：
-- 所有 Phase 1-2 文檔必須經過人類審查
-- 審查通過後才能進入 Phase 3 開發
-- 可以要求修改或重新生成文檔
+├── 文檔必須經過人類審查
+├── 審查通過後才能進入 Phase 3 開發
+├── 可以要求修改或重新生成文檔
+└── 使用 /generate-docs 隨時更新
 ```
 
 ### Phase 3: 開發實作階段
