@@ -1,6 +1,6 @@
 ---
-description: Generate high-quality commit message following Conventional Commits (local only, NO push)
-allowed-tools: Bash(git status), Bash(git diff*), Bash(git add*), Bash(git commit*), Bash(git log*)
+description: Local commit checkpoint with Conventional Commits format (NO push)
+allowed-tools: Read(.claude/taskmaster-data/*), Bash(git status), Bash(git diff*), Bash(git add*), Bash(git commit*), Bash(git log*)
 ---
 
 # /commit - 本地提交檢查點
@@ -8,6 +8,15 @@ allowed-tools: Bash(git status), Bash(git diff*), Bash(git add*), Bash(git commi
 建立本地 Git 提交，遵循 Conventional Commits 規範。
 
 **重要限制**：此命令僅執行本地提交，**絕不推送到遠端**。
+
+## 與 TaskMaster 整合
+
+從當前分支名稱解析任務資訊：
+```
+分支: feat/task-01-user-login
+        ↓
+提交訊息自動關聯: Task-01
+```
 
 ## 執行流程
 
@@ -17,18 +26,21 @@ git status
 git diff --staged
 ```
 
-### 2. 分析變更內容
-- 識別變更類型 (feat/fix/docs/style/refactor/perf/test/chore)
-- 確定影響範圍 (scope)
-- 生成簡潔的提交主旨
+### 2. 解析當前任務
+```
+從分支名稱提取:
+├── 任務 ID: Task-01
+├── 任務類型: feat
+└── 任務描述: user-login
+```
 
 ### 3. 生成提交訊息
-遵循 Conventional Commits 格式：
 ```
 <type>(<scope>): <subject>
 
 <body>
 
+Task: Task-01
 Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>
 ```
 
@@ -39,6 +51,7 @@ git commit -m "$(cat <<'EOF'
 
 <body>
 
+Task: Task-01
 Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>
 EOF
 )"
@@ -59,7 +72,7 @@ EOF
 
 ## 安全限制
 
-- **禁止** `git push` - 使用 `/pr` 命令推送
+- **禁止** `git push` - 使用 `/pr` 或 `/ship` 命令
 - **禁止** 提交敏感文件 (.env, credentials, secrets)
 - **禁止** 空提交訊息或無意義的訊息
 
@@ -71,12 +84,19 @@ EOF
 
 執行結果：
 1. 檢查已暫存的變更
-2. 分析變更內容並生成訊息
-3. 執行 `git commit`
-4. 停止（不推送）
+2. 從分支名稱解析任務 ID
+3. 生成帶任務關聯的提交訊息
+4. 執行 `git commit`
+5. 停止（不推送）
 
-## 與 TaskMaster 整合
+## 工作流程位置
 
-提交後可使用：
-- `/task-status` - 更新任務進度
-- `/task-next` - 取得下一個建議任務
+```
+/start task=Task-01
+   ↓
+開發中...
+   ↓
+/commit  ← 你在這裡（可多次）
+   ↓
+/pr 或 /ship
+```
