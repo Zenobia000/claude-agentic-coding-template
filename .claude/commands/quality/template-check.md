@@ -1,6 +1,7 @@
 ---
 description: Validate project compliance against specific VibeCoding workflow templates
-argument-hint: [template-name] - One of the 10 available VibeCoding templates
+argument-hint: [template-name] - One of 18 VibeCoding templates (workflow-manual, architecture, security, etc.)
+allowed-tools: Read(/**), Read(VibeCoding_Workflow_Templates/**), Grep(*), Glob(*)
 ---
 
 # 📋 VibeCoding Template Compliance Checker
@@ -187,5 +188,12 @@ Available VibeCoding Templates (v2.1):
 - Compliance improves incrementally
 - Human judgment trumps template rules when appropriate
 - Focus on value delivery over checkbox completion
+
+## 📁 Context Integration
+
+**報告輸出位置**: `.claude/context/workflow/`
+- workflow-template-manager 報告寫入此目錄
+- 合規檢查結果可供其他 Agent 參考
+- 支援 WBS 任務狀態追蹤整合
 
 **Template compliance is about better outcomes, not perfect documentation!** 📈

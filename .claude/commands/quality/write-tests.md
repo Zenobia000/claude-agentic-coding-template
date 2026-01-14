@@ -147,6 +147,11 @@ it('should handle async operation', async () => {
 寫測試時可啟動專家 agent：
 - `test-automation-engineer` - 測試策略和實作
 - `code-quality-specialist` - 程式碼品質審查
+- `e2e-validation-specialist` - 端到端測試（UI 測試）
+
+**報告輸出位置**: `.claude/context/testing/`
+- 測試執行報告自動寫入此目錄
+- 覆蓋率分析結果可供其他 Agent 參考
 
 ## 使用範例
 

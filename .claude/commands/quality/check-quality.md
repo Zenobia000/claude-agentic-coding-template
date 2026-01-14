@@ -71,7 +71,7 @@ Running quality checks based on Linus Torvalds philosophy and VibeCoding templat
   [3] 🟢 test-automation-engineer
       └── 測試策略、覆蓋率提升、自動化管線
 
-  [4] ⚡ deployment-operations-engineer
+  [4] ⚡ deployment-expert
       └── 部署就緒檢查、營運準備、監控設定
 
   [5] 📝 documentation-specialist
@@ -79,7 +79,7 @@ Running quality checks based on Linus Torvalds philosophy and VibeCoding templat
 
 🎯 組合建議:
   [Q] 品質優先 → code-quality + security + test
-  [D] 部署準備 → security + deployment + documentation
+  [D] 部署準備 → security + deployment-expert + documentation
   [A] 全面審查 → 啟動所有相關 Subagents
   [N] 稍後處理
 
@@ -101,5 +101,12 @@ Running quality checks based on Linus Torvalds philosophy and VibeCoding templat
 - I'll provide detailed technical analysis
 - All recommendations come with clear rationales
 - You decide what gets implemented when
+
+## 📁 Context Integration
+
+**報告輸出位置**: `.claude/context/quality/`
+- Agent 分析報告自動寫入此目錄
+- 支援跨 Agent 上下文共享
+- 報告格式: `{agent-name}-report-{timestamp}.md`
 
 **Ready to elevate your code quality!** 🚀

@@ -96,4 +96,11 @@ This enhanced review leverages:
 - **Human Control Gates**: All critical decisions require your approval
 - **Persistent Learning**: TaskMaster learns from your preferences
 
+## 📁 Context Integration
+
+**報告輸出位置**: `.claude/context/quality/`
+- code-quality-specialist 審查報告寫入此目錄
+- 支援跨 Agent 上下文共享
+- 可追溯歷史審查記錄
+
 **TaskMaster ready for your command!** 🚀🤖⚔️
