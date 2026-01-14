@@ -1,3 +1,8 @@
+---
+description: Sync branch, push to remote, and generate PR description
+allowed-tools: Bash(git fetch*), Bash(git rebase*), Bash(git push*), Bash(git log*), Bash(git diff*), Bash(gh pr*)
+---
+
 # /pr - 建立 Pull Request
 
 同步分支、推送到遠端，並生成高品質的 PR 描述。

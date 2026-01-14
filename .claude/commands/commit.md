@@ -1,3 +1,8 @@
+---
+description: Generate high-quality commit message following Conventional Commits (local only, NO push)
+allowed-tools: Bash(git status), Bash(git diff*), Bash(git add*), Bash(git commit*), Bash(git log*)
+---
+
 # /commit - 本地提交檢查點
 
 建立本地 Git 提交，遵循 Conventional Commits 規範。

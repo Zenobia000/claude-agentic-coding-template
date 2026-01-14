@@ -1,3 +1,9 @@
+---
+description: Start new task by creating feature/hotfix branch with smart mode detection
+argument-hint: type=[feat|fix|hotfix|docs] desc=<short-description> [id=<task-id>]
+allowed-tools: Bash(git checkout*), Bash(git pull*), Bash(git branch*), Bash(git fetch*)
+---
+
 # /start - 開始新任務
 
 建立新的功能或修復分支，初始化工作環境。

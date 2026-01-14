@@ -1,3 +1,8 @@
+---
+description: Solo mode - Squash merge to main, push, and cleanup (requires confirmation)
+allowed-tools: Bash(git checkout*), Bash(git pull*), Bash(git merge*), Bash(git push*), Bash(git branch*), Bash(git log*)
+---
+
 # /ship - 功能發布（Solo 模式）
 
 **適用對象**：個人開發者或有權限繞過 PR 的情況。

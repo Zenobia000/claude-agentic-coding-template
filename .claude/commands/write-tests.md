@@ -1,3 +1,9 @@
+---
+description: Test strategy and implementation with test pyramid approach
+argument-hint: [file-or-module-path]
+allowed-tools: Read(/**), Write(/**), Edit(/**), Grep(*), Glob(*), Bash(pytest*), Bash(npm test*), Bash(go test*)
+---
+
 # /write-tests - 測試策略與實作
 
 建立全面的測試覆蓋，遵循專案測試慣例。

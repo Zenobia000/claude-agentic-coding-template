@@ -1,3 +1,9 @@
+---
+description: Systematic debugging with Linus Torvalds philosophy and hypothesis testing
+argument-hint: [issue-description]
+allowed-tools: Read(/**), Grep(*), Glob(*), Bash(git diff*), Bash(git log*)
+---
+
 # /debug - 系統化除錯
 
 運用 Linus Torvalds 的實用主義方法進行系統化除錯。
